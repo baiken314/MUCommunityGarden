@@ -5,11 +5,7 @@ const gardenSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.ObjectId,
         ref: "Task"
-    },
-    tasks: [{
-        type: mongoose.Schema.ObjectId,
-        ref: "Task"
-    }]
+    }
 });
 
 const Garden = mongoose.model("Garden", gardenSchema);

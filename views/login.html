@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | MU Community Garden</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="login-app">
+        <h1>MU Community Garden {{ mode == "login" ? "Login" : "Signup" }}</h1>
+        <form method="POST" v-bind:action="mode == 'login' ? '/login' : '/sign-up'">
+            <label>Username</label>
+            <input name="name" type="text" placeholder="username" required>
+            <label v-if="mode != 'login'">Email</label>
+            <input name="email" v-if="mode != 'login'" type="text" placeholder="email" required>
+            <label>Password</label>
+            <input name="password" type="password" placeholder="password" required>
+            <button type="submit">Log in</button>
+            <a @click="toggleMode" href="#">Need to {{ mode == "login" ? "sign up?" : "log in?" }}</a>
+        </form>
+    </div>
+    <script src="scripts/loginApp.js"></script>
+</body>
+</html>

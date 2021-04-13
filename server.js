@@ -16,6 +16,8 @@ const postRouter = require("./routes/postRouter");
 const taskRouter = require("./routes/taskRouter");
 const userRouter = require("./routes/userRouter");
 
+const User = require("./models/User");
+
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -44,21 +46,73 @@ app.use("/user", userRouter);
 
 // PRESENT VIEWS
 app.get("/", (req, res) => {
-    req.session.randomKey = req.session.randomKey || Math.random();
-    res.send(`Server running on ${PORT}, your session key is ${req.session.randomKey}`);
+    res.redirect("/login");
 });
 
 app.get("/login", (req, res) => {
-    
+    console.log("GET login");
+
+    if (req.session.user != null) {
+        res.redirect("/userpage");
+    }
+
+    res.sendFile(__dirname + "/views/login.html");
+});
+
+app.get("/userpage", (req, res) => {
+    console.log("GET userpage");
+
+    if (req.session.user == null) {
+        res.redirect("/login");
+    }
+
+    res.sendFile(__dirname + "/views/userpage.html");
 });
 
 // USER SIGNUPS
-app.post("/sign-up", (req, res) => {
-
+/**
+ * req.body.name: String
+ * req.body.email: String
+ * req.body.password: String
+ */
+app.post("/sign-up", async (req, res) => {
+    console.log("POST sign-up");
+    let user = await User.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        posts: [],
+        gardens: [],
+        tasks: []
+    });
+    req.body.user = user;
+    req.body.save(() => {
+        res.redirect("/userpage");
+    });
 });
 
-app.post("/login", (req, res) => {
+/**
+ * req.body.name: String
+ * req.body.password: String
+ */
+app.post("/login", async (req, res) => {
+    console.log("POST login")
+    let user = await User.findOne({ name: req.body.name });
+    if (req.body.password != user.password) {
+        res.json({ message: "ERROR - password is incorrect" });
+        return;
+    }
+    req.session.user = user;
+    req.session.save(() => {
+        res.redirect("/userpage");
+    });
+});
 
+app.get("/logout", async (req, res) => {
+    req.session.user = null;
+    req.session.save(() => {
+        res.redirect("/login");
+    });
 });
 
 const listener = httpServer.listen(PORT, () => {
