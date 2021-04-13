@@ -72,43 +72,46 @@ app.get("/userpage", (req, res) => {
 // USER SIGNUPS
 /**
  * req.body.name: String
- * req.body.email: String
- * req.body.password: String
- */
-app.post("/sign-up", async (req, res) => {
-    console.log("POST sign-up");
-    let user = await User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-        posts: [],
-        gardens: [],
-        tasks: []
-    });
-    req.body.user = user;
-    req.body.save(() => {
-        res.redirect("/userpage");
-    });
-});
-
-/**
- * req.body.name: String
+ * req.body.email: String  // if signing up
  * req.body.password: String
  */
 app.post("/login", async (req, res) => {
-    console.log("POST login")
-    let user = await User.findOne({ name: req.body.name });
-    if (req.body.password != user.password) {
-        res.json({ message: "ERROR - password is incorrect" });
-        return;
+    console.log("POST login");
+
+    let user;
+
+    // create new user for signup
+    if (req.body.email) {
+        user = await User.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+            posts: [],
+            gardens: [],
+            tasks: []
+        });
     }
+
+    // login existing user
+    else {
+        user = await User.findOne({ name: req.body.name });
+        if (typeof user == "undefined" || typeof user == "null" || user == null) {
+            res.send(`User ${req.body.name} does not exist.`);
+            return;
+        }
+        if (user.password != req.body.password) {
+            res.send(`Password is incorrect.`);
+            return;
+        }
+    }
+
     req.session.user = user;
     req.session.save(() => {
         res.redirect("/userpage");
     });
 });
 
-app.get("/logout", async (req, res) => {
+app.get("/logout", (req, res) => {
     req.session.user = null;
     req.session.save(() => {
         res.redirect("/login");

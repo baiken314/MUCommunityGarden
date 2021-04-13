@@ -10,11 +10,11 @@
         <h1>MU Community Garden {{ mode == "login" ? "Login" : "Signup" }}</h1>
         <form method="POST" v-bind:action="mode == 'login' ? '/login' : '/sign-up'">
             <label>Username</label>
-            <input name="name" type="text" placeholder="username" required>
+            <input name="name" type="text" placeholder="username" minlength="5" required>
             <label v-if="mode != 'login'">Email</label>
-            <input name="email" v-if="mode != 'login'" type="text" placeholder="email" required>
+            <input name="email" v-if="mode != 'login'" type="email" placeholder="email" required>
             <label>Password</label>
-            <input name="password" type="password" placeholder="password" required>
+            <input name="password" type="password" placeholder="password" minlength="8" required>
             <button type="submit">Log in</button>
             <a @click="toggleMode" href="#">Need to {{ mode == "login" ? "sign up?" : "log in?" }}</a>
         </form>
