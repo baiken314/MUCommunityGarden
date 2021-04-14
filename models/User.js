@@ -9,11 +9,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
+    phoneNumber: String,
     password: String,
-    posts: [{
-        type: mongoose.Schema.ObjectId,
-        ref: "Post"
-    }],
     gardens: [{
         type: mongoose.Schema.ObjectId,
         ref: "Garden"
@@ -23,6 +20,27 @@ const userSchema = new mongoose.Schema({
         ref: "Task"
     }]
 });
+
+userSchema.virtual("posts", {
+    ref: "Post",
+    localField: "_id",
+    foreignField: "user"
+});
+
+userSchema.virtual("gardens", {
+    ref: "Garden",
+    localField: "_id",
+    foreignField: "user"
+});
+
+userSchema.virtual("tasks", {
+    ref: "Task",
+    localField: "_id",
+    foreignField: "user"
+});
+
+userSchema.set("toObject", { virtuals: true });
+userSchema.set("toJSON", { virtuals: true });
 
 const User = mongoose.model("User", userSchema);
 

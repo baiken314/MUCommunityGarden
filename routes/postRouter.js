@@ -17,8 +17,9 @@ router.route("/").get(async (req, res) => {
  * req.body.parent: Post._id  // use this to comment
  */
 router.route("/create").post(async (req, res) => {
+    console.log("POST post/create");
     let user = await User.findOne({ _id: req.body.user });
-    await new Post({
+    let post = await new Post({
         title: req.body.title,
         tags: req.body.tags,
         content: req.body.content,
@@ -27,6 +28,8 @@ router.route("/create").post(async (req, res) => {
         user: user._id,
         date: new Date()
     }).save();
+
+    res.json(post);
 });
 
 /**
@@ -38,6 +41,7 @@ router.route("/create").post(async (req, res) => {
  * req.body.garden
  */
 router.route("/update").post(async (req, res) => {
+    console.log("POST post/update");
     let user = await User.findOne({ _id: req.body.user });
     let post = await Post.findOne({ _id: req.body.post });
 
@@ -77,6 +81,16 @@ router.route("/delete").post(async (req, res) => {
     if (canDelete) {
         for (postId of req.body.posts) {
             let post = await Post.findOne({ _id: postId });
+
+            // remove from parent
+            if (post.parent != undefined) {
+                let parent = await Post.findOne({ _id: post.parent });
+                parent.comments = parent.comments.filter(post => post._id != postId);
+            }
+
+            // remove from user
+            user.posts = user.posts.filter(post => post._id != postId);
+
             await post.delete();
         }
     }
