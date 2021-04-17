@@ -10,15 +10,7 @@ const userSchema = new mongoose.Schema({
         unique: true
     },
     phoneNumber: String,
-    password: String,
-    gardens: [{
-        type: mongoose.Schema.ObjectId,
-        ref: "Garden"
-    }],
-    tasks: [{
-        type: mongoose.Schema.ObjectId,
-        ref: "Task"
-    }]
+    password: String
 });
 
 userSchema.virtual("posts", {
