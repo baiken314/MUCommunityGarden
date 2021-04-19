@@ -1,0 +1,131 @@
+/* Pulled from https://codepen.io/miroot/pen/qwIgC */
+
+/* 'Open Sans' font from Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body {
+  background: #5B6770;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.login {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* Reset top and bottom margins from certain elements */
+.login-header,
+.login p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* The triangle form is achieved by a CSS hack */
+.login-triangle {
+  width: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border: 12px solid transparent;
+  border-bottom-color: #28d;
+}
+
+.login-header {
+  background: #004C97;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.user-header {
+  background: #004C97;
+  padding: 25px;
+  font-size: 1.8em;
+  width: 750px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  border-color: white;
+  border-width: 3px;
+}
+.post-header {
+  background: #004C97;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: justify;
+  color: #fff;
+}
+
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+}
+
+/* Every row inside .login-container is defined with p tags */
+.login p {
+  padding: 12px;
+}
+
+.login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+}
+
+/* Text fields' focus effect */
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+  border-color: #888;
+}
+
+.login input[type="submit"] {
+  background: #004C97;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login input[type="submit"]:hover {
+  background: #69B3E7;
+}
+
+/* Buttons' focus effect */
+.login input[type="submit"]:focus {
+  border-color: #69B3E7;
+}
+
+.list {
+  margin: auto;
+  padding:4px;
+  background-color: #69B3E7;
+  height: 110px;
+  overflow: auto;
+  text-align:justify;
+}
+
+.user {
+  margin-right: auto;
+  margin-left: auto;
+  padding:1px;
+  font-size: 20px;
+  background: #ebebeb;
+  width: 800px;
+}
