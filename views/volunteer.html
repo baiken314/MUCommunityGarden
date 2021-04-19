@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Volunteer | MU Community Garden</title>
+    <link rel="stylesheet" type ="text/css" href="css/GardenStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="login">
+        <div id="login-app">
+            <h2 class="login-header">MU Community Garden Volunteer Sign Up</h2>
+            <form class="login-container" method="POST" action="/login">
+                <label>Username</label>
+                <input name="name" type="text" placeholder="Your Name" minlength="5" required>
+                <label>Plot Number</label>
+                <input name="plot" type="number" placeholder="0" required>
+                <label>Date</label>
+                <input name="date" type="date" required>
+                <label>Comments</label>
+                <input name="comments" type="text" placeholder="Describe what was done">
+                <!-- <button type="submit">Log in</button> -->
+                &nbsp;
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
+    <script src="scripts/loginApp.js"></script>
+</body>
+</html>
