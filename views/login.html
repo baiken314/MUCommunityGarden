@@ -2,22 +2,27 @@
 <html>
 <head>
     <title>Login | MU Community Garden</title>
+    <link rel="stylesheet" type ="text/css" href="css/GardenStyle.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-    <div id="login-app">
-        <h1>MU Community Garden {{ mode == "login" ? "Login" : "Signup" }}</h1>
-        <form method="POST" action="/login">
-            <label>Username</label>
-            <input name="name" type="text" placeholder="username" minlength="5" required>
-            <label v-if="mode != 'login'">Email</label>
-            <input name="email" v-if="mode != 'login'" type="email" placeholder="email" required>
-            <label>Password</label>
-            <input name="password" type="password" placeholder="password" minlength="8" required>
-            <button type="submit">Log in</button>
-            <a @click="toggleMode" href="#">Need to {{ mode == "login" ? "sign up?" : "log in?" }}</a>
-        </form>
+    <div class="login">
+        <div id="login-app">
+            <h2 class="login-header">MU Community Garden {{ mode == "login" ? "Login" : "Signup" }}</h2>
+            <form class="login-container" method="POST" action="/login">
+                <label>Username</label>
+                <input name="name" type="text" placeholder="Username" minlength="5" required>
+                <label v-if="mode != 'login'">Email</label>
+                <input name="email" v-if="mode != 'login'" type="email" placeholder="Email" required>
+                <label>Password</label>
+                <input name="password" type="password" placeholder="Password" minlength="8" required>
+                <!-- <button type="submit">Log in</button> -->
+                &nbsp;
+                <input type="submit" value="Log in">
+                <a @click="toggleMode" href="#">Need to {{ mode == "login" ? "sign up?" : "log in?" }}</a>
+            </form>
+        </div>
     </div>
     <script src="scripts/loginApp.js"></script>
 </body>
