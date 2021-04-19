@@ -5,7 +5,7 @@ const router = require("express").Router();
 
 router.route("/").get(async (req, res) => {
     console.log("GET task");
-    res.json(await Task.find());
+    res.json(await Task.find().populate("user", "name"));
 });
 
 /**
