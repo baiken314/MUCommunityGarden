@@ -31,6 +31,12 @@ userSchema.virtual("tasks", {
     foreignField: "user"
 });
 
+userSchema.virtual("events", {
+    ref: "Event",
+    localField: "_id",
+    foreignField: "user"
+});
+
 userSchema.set("toObject", { virtuals: true });
 userSchema.set("toJSON", { virtuals: true });
 

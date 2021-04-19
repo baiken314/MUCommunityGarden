@@ -15,15 +15,27 @@ const postSchema = new mongoose.Schema({
         ref: "Garden"
     },
 
-    likes: [{
+    likedBy: [{
         type: mongoose.Schema.ObjectId,
         ref: "User"
     }],
 
     date: Date,
-    parent: this,
-    comments: [this]  // comments should not have title, tags, garden
+    parent: this
 });
+
+postSchema.virtual("comments", {
+    ref: "Post",
+    localField: "_id",
+    foreignField: "parent"
+});
+
+postSchema.virtual("likes", () => {
+    return this.likedBy.length;
+});
+
+postSchema.set("toObject", { virtuals: true });
+postSchema.set("toJSON", { virtuals: true });
 
 const Post = mongoose.model("Post", postSchema);
 

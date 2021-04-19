@@ -5,7 +5,7 @@ const router = require("express").Router();
 
 router.route("/").get(async (req, res) => {
     console.log("GET post");
-    res.json(await Post.find());
+    res.json(await Post.find().populate("user", "name"));
 });
 
 /**
@@ -29,6 +29,7 @@ router.route("/create").post(async (req, res) => {
         date: new Date()
     }).save();
 
+    console.log(`User ${user._id} created a post`);
     res.json(post);
 });
 
@@ -58,6 +59,9 @@ router.route("/update").post(async (req, res) => {
         garden: req.body.garden,
         date: new Date()
     });
+
+    console.log(`User ${user._id} updated a post ${post._id}`);
+    res.json(post);
 });
 
 /**
@@ -81,17 +85,10 @@ router.route("/delete").post(async (req, res) => {
     if (canDelete) {
         for (postId of req.body.posts) {
             let post = await Post.findOne({ _id: postId });
-
-            // remove from parent
-            if (post.parent != undefined) {
-                let parent = await Post.findOne({ _id: post.parent });
-                parent.comments = parent.comments.filter(post => post._id != postId);
-            }
-
-            // remove from user
-            user.posts = user.posts.filter(post => post._id != postId);
-
             await post.delete();
+            console.log(`User ${user._id} has deleted posts ${req.body.posts}`);
+            res.json({ message: "SUCCESS - posts have been deleted" });
+            return;
         }
     }
     else {
@@ -108,8 +105,18 @@ router.route("/like").post(async (req, res) => {
 
     let post = await Post.findOne({ _id: req.body.post });
 
-    post.likes.push(req.body.user);
+    let userCannotLike = post.likedBy.some((user) => {
+        return user.equals(req.body.user);
+    });
 
+    if (userCannotLike) {
+        res.json({ message: "ERROR - user already liked this post" });
+        return;
+    }
+
+    post.likedBy.push(req.body.user);
+
+    console.log(`User ${req.body.user} liked post ${post._id}`);
     await post.save();
 });
 
