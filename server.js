@@ -16,6 +16,10 @@ const postRouter = require("./routes/postRouter");
 const taskRouter = require("./routes/taskRouter");
 const userRouter = require("./routes/userRouter");
 
+const Event = require("./models/Event");
+const Garden = require("./models/Garden");
+const Post = require("./models/Post");
+const Task = require("./models/Task");
 const User = require("./models/User");
 
 mongoose.connect(MONGO_URI, {
@@ -64,10 +68,33 @@ app.get("/userpage", (req, res) => {
 
     if (req.session.user == null) {
         res.redirect("/login");
+        return;
     }
 
     res.sendFile(__dirname + "/views/userpage.html");
 });
+
+app.get("/user-session", async (req, res) => {
+    console.log("GET user-session");
+
+    if (req.session.user == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    let user = await User.findOne({ _id: req.session.user._id });
+
+    user.password = undefined;
+
+    res.json({
+        events: await Event.find(),
+        gardens: await Garden.find(),
+        posts: await Post.find(),
+        tasks: await Task.find(),
+        user: user
+    });
+});
+
 
 // USER SIGNUPS
 /**
