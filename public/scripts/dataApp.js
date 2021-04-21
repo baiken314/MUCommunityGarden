@@ -15,7 +15,7 @@ let dataApp = new Vue({
     el: "#data-app",
     data: {
         user: {},
-        event: {},
+        events: {},
         gardens: {},
         posts: {},
         tasks: {}
