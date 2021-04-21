@@ -5,6 +5,10 @@ const bodyParser = require("body-parser");
 
 const app = express();
 const httpServer = require("http").Server(app);
+const io = require("socket.io")(httpServer);
+
+module.exports.io = io;
+
 const MongoStore = require("connect-mongo")(session);
 
 const MONGO_URI = "mongodb+srv://highlandcentralinc:joenamath2021@cluster0.nz8tm.mongodb.net/mu_garden?retryWrites=true&w=majority";
