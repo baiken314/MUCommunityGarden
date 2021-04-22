@@ -34,7 +34,7 @@ body {
 .login-header {
   background: #004C97;
   padding: 20px;
-  font-size: 1.4em;
+  font-size: 1.8em;
   font-weight: normal;
   text-align: center;
   text-transform: uppercase;
@@ -43,13 +43,15 @@ body {
 
 .user-header {
   background: #004C97;
-  font-size: 1.8em;
-  width: 750px;
-  font-weight: bold;
+  font-size: 2.2em;
+  width: 775px;
+  font-weight: normal;
   text-align: center;
   color: #fff;
   border-color: white;
-  margin: 2px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .post-header {
   background: #004C97;
@@ -120,12 +122,34 @@ body {
   text-align:justify;
 }
 
+.post {
+  margin: auto;
+  padding:4px;
+  background-color: #fff;
+  height: 200px;
+  overflow: auto;
+  text-align:justify;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+.post-info {
+  margin: auto;
+  padding:4px;
+  background-color: #69B3E7;
+  height: 35px;
+  overflow: auto;
+  text-align:justify;
+  font-size: 1.2em;
+}
+
 .logout {
   margin: 1px;
   padding:4px;
   background-color: #69B3E7;
-  height: 50px;
+  height: 65px;
   text-align:right;
+  font-size: 1.4em;
 }
 
 .user {
@@ -133,6 +157,6 @@ body {
   margin-left: auto;
   padding:1px;
   font-size: 20px;
-  background: #ebebeb;
+  background: #96c5e8;
   width: 800px;
 }

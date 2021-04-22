@@ -3,17 +3,40 @@
 <head>
     <link rel="stylesheet" type ="text/css" href="css/GardenStyle.css">
     <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
+    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
     <title>MU Community Garden Userpage</title>
 </head>
 <body>
     <div id="data-app" class="user">
-        <h1 class="user-header w3-container w3-margin">Message Board</h1>
-        <li v-for="post in posts" :key="post.title">
+        <h3 class="user-header">Message Board</h3>
+        <!--<li v-for="post in posts" :key="post.title">
             <h3 class="login-header">{{post.title}}</h3>
             <div class="list">
-                {{post.comments}}
+                {{post.content}}
             </div>
-        </li>        
+        </li> -->    
+        <h3 class="login-header"><a href="#">Tomato Pests!</a></h3>
+        <div class="post-info">
+            Created by: Kevin Pecci on 5/23/2021
+        </div>
+        <div class="post">
+            Recently I've noticed my tomato plants in plot 5 have been getting eaten alive by Aphids! Does anyone know a good way to keep these bothersome bugs off my precious plants?
+        </div>
+        <h3 class="login-header"><a href="#">Groundhog Grabbing Gourds</a></h3>
+        <div class="post-info">
+            Created by: Noah Rottler-Gurley on 4/29/2021
+        </div>
+        <div class="post">
+            I was very excited for my Squash in plot 1 to be ready to harvest, but when I got to the garden, I saw a groundhog scooting under the fence with my sqash in tow. To protect ourselves from this thief we should look into reinforcing the fence or making it run deeper.
+        </div>   
+        <h3 class="login-header"><a href="#">Perfect gardening weather on Saturday!</a></h3>
+        <div class="post-info">
+            Created by: Bradley Aiken on 4/15/2021
+        </div>
+        <div class="post">
+            The forceast for this saturday is going to be sunny and 82°, perfect weather to get your late spring plants in the groud. ☀️
+        </div>   
         <div class ="logout">
             <a href="/logout"><button class ="w3-button w3-indigo w3-cell " type="button">LOGOUT</button></a>
         </div>
