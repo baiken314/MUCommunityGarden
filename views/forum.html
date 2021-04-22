@@ -1,52 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" type ="text/css" href="css/GardenStyle.css">
-    <link rel="stylesheet" href="css/w3.css">
-    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
-    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
-    <title>MU Community Garden Userpage</title>
-</head>
-<body>
-    <div id="data-app" class="user">
-        <h3 class="user-header">Message Board</h3>
-        <!--<li v-for="post in posts" :key="post.title">
-            <h3 class="login-header">{{post.title}}</h3>
-            <div class="list">
-                {{post.content}}
+    <head>
+        <title>Message Board | MU Community Garden</title>
+        <!--<link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">-->
+        <!--<link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">-->
+        <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
+        <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
+    </head>
+    <body>
+        <div id="cloud-container" style="height:100%;">
+            <div class="w3-top">
+                <div class="w3-bar w3-mobile" style="background-color:#69B3E7">
+                    <div style="width:60%; margin:auto; padding:20px;">
+                        <b>
+                        <a href="#" class="w3-bar-item w3-button">Announcements</a>
+                        <a href="#" class="w3-bar-item w3-button w3-blue">Message Board</a>
+                        <a href="#" class="w3-bar-item w3-button">Volunteer Log</a>
+                        <a href="#" class="w3-bar-item w3-button w3-right">Logout</a>
+                        <a href="#" class="w3-bar-item w3-button w3-right">My User</a>
+                        </b>
+                    </div>
+                </div>
             </div>
-        </li> -->    
-        <h3 class="login-header"><a href="#">Tomato Pests!</a></h3>
-        <div class="post-info">
-            Created by: Kevin Pecci on 5/23/2021
+            <br>
+            <br>
+            <div style="width:60%; margin:auto; padding:20px;">
+                <div id="data-app" class="custom-format">
+                    <h2 class="custom-format-header">Message Board</h2>
+                    <div class="custom-format-container">
+                        <!--<li v-for="post in posts" :key="post.title">
+                            <h3 class="custom-format-header">{{post.title}}</h3>
+                            <div class="list">
+                                {{post.content}}
+                            </div>
+                        </li> -->    
+                        <div class="custom-format-container">
+                            <h4 class="custom-format-header" style="text-align:left"><a href="#">Tomato Pests, Please Help Me!</a></h4>
+                            <div class="custom-format-container">
+                                <div class="post-info">
+                                    Created by: Kevin Pecci on 5/23/2021
+                                </div>
+                                <div class="post">
+                                    Recently I've noticed my tomato plants in plot 5 have been getting eaten alive by aphids! Does anyone know a good way to keep these bothersome bugs off my precious plants?
+                                </div>
+                                <div class ="viewbutton">
+                                    <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW COMMENTS</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-format-container">
+                            <h4 class="custom-format-header" style="text-align:left"><a href="#">Groundhog Grabbing Gourds</a></h4>
+                            <div class="custom-format-container">
+                                <div class="post-info">
+                                    Created by: Noah Rottler-Gurley on 4/29/2021
+                                </div>
+                                <div class="post">
+                                    I was very excited for my squash in plot 1 to be ready to harvest, but when I got to the garden, I saw a groundhog scooting under the fence with my squash in tow. To protect ourselves from this thief we should look into reinforcing the fence or making it run deeper.
+                                </div>   
+                                <div class ="viewbutton">
+                                    <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW COMMENTS</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="custom-format-container">
+                            <h4 class="custom-format-header" style="text-align:left"><a href="#">Perfect gardening weather on Saturday!</a></h4>
+                            <div class="custom-format-container">
+                                <div class="post-info">
+                                    Created by: Bradley Aiken on 4/15/2021
+                                </div>
+                                <div class="post">
+                                    The forecast for this Saturday is sunny and 82°, perfect weather to get your late Spring plants in the ground. ☀️
+                                </div>   
+                                <div class ="viewbutton">
+                                    <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW COMMENTS</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<script src="scripts/dataApp.js"></script>-->
+            </div>
         </div>
-        <div class="post">
-            Recently I've noticed my tomato plants in plot 5 have been getting eaten alive by Aphids! Does anyone know a good way to keep these bothersome bugs off my precious plants?
-        </div>
-        <div class ="viewbutton">
-            <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW COMMENTS</button></a>
-        </div>
-        <h3 class="login-header"><a href="#">Groundhog Grabbing Gourds</a></h3>
-        <div class="post-info">
-            Created by: Noah Rottler-Gurley on 4/29/2021
-        </div>
-        <div class="post">
-            I was very excited for my Squash in plot 1 to be ready to harvest, but when I got to the garden, I saw a groundhog scooting under the fence with my squash in tow. To protect ourselves from this thief we should look into reinforcing the fence or making it run deeper.
-        </div>   
-        <div class ="viewbutton">
-            <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW COMMENTS</button></a>
-        </div>
-        <h3 class="login-header"><a href="#">Perfect gardening weather on Saturday!</a></h3>
-        <div class="post-info">
-            Created by: Bradley Aiken on 4/15/2021
-        </div>
-        <div class="post">
-            The forecast for this Saturday is going to be sunny and 82°, perfect weather to get your late spring plants in the groud. ☀️
-        </div>   
-        <div class ="viewbutton">
-            <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW COMMENTS</button></a>
-        </div>
-    </div>
-    <script src="scripts/dataApp.js"></script>
-</body>
+    </body>
 </html>

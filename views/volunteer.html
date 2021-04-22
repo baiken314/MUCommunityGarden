@@ -1,31 +1,104 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Volunteer | MU Community Garden</title>
-    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
-    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-</head>
-<body>
-    <div class="login">
-        <div id="login-app">
-            <h2 class="login-header">MU Community Garden Volunteer Sign Up</h2>
-            <form class="login-container" method="POST" action="/login">
-                <label>Username</label>
-                <input name="name" type="text" placeholder="Your Name" minlength="5" required>
-                <label>Plot Number</label>
-                <input name="plot" type="number" placeholder="0" required>
-                <label>Date</label>
-                <input name="date" type="date" required>
-                <label>Comments</label>
-                <input name="comments" type="text" placeholder="Describe what was done">
-                <!-- <button type="submit">Log in</button> -->
-                &nbsp;
-                <input type="submit" value="Send">
-            </form>
+    <head>
+        <title>Volunteer Log | MU Community Garden</title>
+        <!--<link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">-->
+        <!--<link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">-->
+        <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
+        <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
+        <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+        <!--<script src="/socket.io/socket.io.js"></script>-->
+    </head>
+    <body>
+        <div id="cloud-container" style="height:100%;">
+            <div class="w3-top">
+                <div class="w3-bar w3-mobile" style="background-color:#69B3E7">
+                    <div style="width:60%; margin:auto; padding:20px;">
+                        <b>
+                        <a href="#" class="w3-bar-item w3-button">Announcements</a>
+                        <a href="#" class="w3-bar-item w3-button">Message Board</a>
+                        <a href="#" class="w3-bar-item w3-button w3-blue">Volunteer Log</a>
+                        <a href="#" class="w3-bar-item w3-button w3-right">Logout</a>
+                        <a href="#" class="w3-bar-item w3-button w3-right">My User</a>
+                        </b>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div style="width:60%; height:100%; margin:auto; padding:20px;">
+                <div class="login">
+                    <div id="login-app">
+                        <h2 class="login-header">Volunteer Log</h2>
+                        <form class="login-container" method="POST" action="/login">
+                            <!-- <label>Username</label>
+                            <input name="name" type="text" placeholder="Your Name" minlength="5" required>
+                            <label>Plot Number</label>
+                            <input name="plot" type="number" placeholder="0" required>-->
+                            <div class="custom-format-container">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td>
+                                            <label>Date</label>
+                                            <input name="date" type="date" required>
+                                        </td>
+                                        <td>
+                                            <label>Hours</label>
+                                            <input name="hours" type="number" placeholder="Please enter the number of hours this work took.">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="custom-format-container">
+                                <label>Volunteer Task(s)</label>
+                                <table style="width:100%;">
+                                    <tr style="height:50px">
+                                        <td style="width:20%;">
+                                            <input type="checkbox">
+                                        </td>
+                                        <td style="width:80%;">
+                                            <label class="w3-left">Pull Weeds</label>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:50px">
+                                        <td style="width:20%;">
+                                            <input type="checkbox">
+                                        </td>
+                                        <td style="width:80%;">
+                                            <label class="w3-left">Harvest Peppers</label>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:50px">
+                                        <td style="width:20%;">
+                                            <input type="checkbox">
+                                        </td>
+                                        <td style="width:80%;">
+                                            <label class="w3-left">Water Plot 3</label>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:50px">
+                                        <td style="width:20%;">
+                                            <input type="checkbox">
+                                        </td>
+                                        <td style="width:80%;">
+                                            <input type="text" placeholder="Custom">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br>
+                            <div class="custom-format-container">
+                                <label>Comments</label>
+                                <input name="comments" type="text" placeholder="Please leave any comments here." style="height:100px">
+                                <!-- <button type="submit">Log in</button> -->
+                                &nbsp;
+                                <input type="submit" value="Submit Volunteer Log">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--<script src="scripts/loginApp.js"></script>-->
+            </div>
         </div>
-    </div>
-    <script src="scripts/loginApp.js"></script>
-</body>
+    </body>
 </html>
