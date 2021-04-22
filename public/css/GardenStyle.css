@@ -43,14 +43,13 @@ body {
 
 .user-header {
   background: #004C97;
-  padding: 25px;
   font-size: 1.8em;
   width: 750px;
   font-weight: bold;
   text-align: center;
   color: #fff;
   border-color: white;
-  border-width: 3px;
+  margin: 2px;
 }
 .post-header {
   background: #004C97;
@@ -119,6 +118,14 @@ body {
   height: 110px;
   overflow: auto;
   text-align:justify;
+}
+
+.logout {
+  margin: 1px;
+  padding:4px;
+  background-color: #69B3E7;
+  height: 50px;
+  text-align:right;
 }
 
 .user {
