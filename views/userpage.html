@@ -11,12 +11,18 @@
 </head>
 <body>
     <div id="data-app" class="user">
-        <h1 class="user-header w3-container w3-margin">Welcome, {{user.name}}</h1> <!--Need to ask how logic works to actually pull stuff-->
+        <!-- <h1 class="user-header w3-container w3-margin">Welcome, {{user.name}}</h1> -->
+        <h1 class="user-header w3-container w3-margin">Welcome, Kevin</h1>
         <h3 class="login-header">Tasks</h3>
         <div class="list">
             <table class="w3-table-all">
                 <tr>
-                    <td v-for="task in tasks" :key="task.title">
+                    <td>Title</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
+                </tr>
+                <tr>
+                    <!-- <td v-for="task in tasks" :key="task.title"> this should be moved to the row to iterate better
                         {{ task.title }}
                     </td>
                     <td v-for="task in tasks" :key="task.completedDate">
@@ -24,15 +30,28 @@
                     </td>
                     <td v-for="task in tasks" :key="task.garden">
                         {{ task.garden }}
-                    </td>
+                    </td> -->
+                    <td>Pull weeds</td>
+                    <td>4/21/21</td>
+                    <td>4/28/21</td>
+                </tr>
+                <tr>
+                    <td>Harvest Peppers</td>
+                    <td>4/15/21</td>
+                    <td>4/17/21</td>
+                </tr>
+                <tr>
+                    <td>Water Plot 3</td>
+                    <td>4/12/21</td>
+                    <td>4/12/21</td>
                 </tr>
             </table>
         </div>
         <h3 class="login-header">Events</h3>
         <div class="list">
             <table class="w3-table-all">
-                <tr>
-                    <td v-for="event in events" :key="event.title">
+                <!-- <tr>
+                    <td v-for="event in events" :key="event.start">
                         {{ event.title }}
                     </td>
                     <td v-for="event in events" :key="event.start">
@@ -41,19 +60,54 @@
                     <td v-for="event in events" :key="event.end">
                         {{ event.end }}
                     </td>
+                </tr> -->
+                <tr>
+                    <td>Title</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
+                </tr>
+                <tr>
+                    <td>Collection Day</td>
+                    <td>4/17/21</td>
+                    <td>4/17/21</td>
+                </tr>
+                <tr>
+                    <td>Early Spring Planting</td>
+                    <td>4/10/21</td>
+                    <td>4/17/21</td>
+                </tr>
+                <tr>
+                    <td>Pre-planting weeding</td>
+                    <td>4/2/21</td>
+                    <td>4/9/21</td>
                 </tr>
             </table>
         </div>
         <h3 class="login-header">Gardens</h3>
         <div class="list">
             <table class="w3-table-all">
-                <tr>
+                <!-- <tr>
                     <td v-for="garden in gardens" :key="garden.plot">
                         {{ garden.plot }}
                     </td>
                     <td v-for="garden in gardens" :key="garden.user">
                         {{ garden.user }}
                     </td>
+                </tr> -->
+                <tr>
+                    <td>Plot Number</td>
+                    <td>Crop 1</td>
+                    <td>Crop 2</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Peppers</td>
+                    <td>Carrots</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Tomatoes</td>
+                    <td>N/A</td>
                 </tr>
             </table>        
         </div>
