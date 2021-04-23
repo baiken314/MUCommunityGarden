@@ -5,12 +5,16 @@ const router = require("express").Router();
 
 router.route("/").get(async (req, res) => {
     console.log("GET post");
-    res.json(await Post.find().populate("user", "name"));
+    res.json(await Post.find()
+        .populate("user", "name")
+        .populate("comments")
+    );
 });
 
 /**
  * req.body.user: User._id
  * req.body.title: String
+ * req.body.type: String  // "post", "annoucement", "automated"
  * req.body.tags: [String]
  * req.body.content: String
  * req.body.garden: Garden._id  // reference a Garden with the Post
@@ -21,6 +25,7 @@ router.route("/create").post(async (req, res) => {
     let user = await User.findOne({ _id: req.body.user });
     let post = await new Post({
         title: req.body.title,
+        type: req.body.type,
         tags: req.body.tags,
         content: req.body.content,
         parent: req.body.parent,
