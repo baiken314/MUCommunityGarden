@@ -52,7 +52,7 @@ app.use("/post", postRouter);
 app.use("/task", taskRouter);
 app.use("/user", userRouter);
 
-// PRESENT VIEWS
+// present views
 app.get("/", (req, res) => {
     res.redirect("/login");
 });
@@ -78,6 +78,52 @@ app.get("/userpage", (req, res) => {
     res.sendFile(__dirname + "/views/userpage.html");
 });
 
+app.get("/forum", (req, res) => {
+    console.log("GET userpage");
+
+    if (req.session.user == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    res.sendFile(__dirname + "/views/forum.html"); 
+});
+
+app.get("/announcements", (req, res) => {
+    console.log("GET announcements");
+
+    if (req.session.user == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    res.sendFile(__dirname + "/views/announcements.html"); 
+});
+
+app.get("/make-post", (req, res) => {
+    console.log("GET make-post");
+
+    if (req.session.user == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    res.sendFile(__dirname + "/views/makePost.html"); 
+});
+
+app.get("/volunteer", (req, res) => {
+    console.log("GET volunteer");
+
+    if (req.session.user == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    res.sendFile(__dirname + "/views/volunteer.html"); 
+});
+
+
+// get data
 app.get("/user-session", async (req, res) => {
     console.log("GET user-session");
 
@@ -100,14 +146,14 @@ app.get("/user-session", async (req, res) => {
 });
 
 
-// USER SIGNUPS
+// user signups
 /**
  * req.body.name: String
  * req.body.email: String  // if signing up
  * req.body.password: String
  */
 app.post("/login", async (req, res) => {
-    console.log("POST login");
+    console.log("POST login... " + req.body);
 
     let user;
 

@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Login | MU Community Garden</title>
-        <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
-	    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
-	    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
-	    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
-        <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
-        <!--<script src="/socket.io/socket.io.js"></script>-->
-    </head>
-    <body>
-        <div id="cloud-container" style="height:100%;">
-            <div class="w3-top">
-				<div class="w3-bar w3-mobile" style="background-color:#69B3E7">
-					<img src="C:\Users\Summit\github repos\MUCommunityGarden\public\logo.png" class="w3-bar-item" style="height:65px;">
-					<div style="width:80%; margin:auto; padding:10px;">
-					</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-            <div style="width:30%; height:100%; margin:auto; padding:20px;">
-                <div class="custom-format">
-                    <div id="login-app">
-                        <h2 class="custom-format-header">MU Community Garden<br>Login<!--{{ mode == "login" ? "Login" : "Signup" }}--></h2>
-                        <form class="custom-format-container" method="POST" action="/login">
-                            <label>Username</label>
-                            <input name="name" type="text" placeholder="Username" minlength="5" required>
-                            <!--<label v-if="mode != 'login'">Email</label>
-                            <input name="email" v-if="mode != 'login'" type="email" placeholder="Email" required>-->
-                            <label>Password</label>
-                            <input name="password" type="password" placeholder="Password" minlength="8" required>
-                            <!-- <button type="submit">Log in</button> -->
-                            &nbsp;
-                            <input type="submit" value="Log in">
-                            <br>
-                            <a @click="toggleMode" href="#">Need to sign up?<!--{{ mode == "login" ? "sign up?" : "log in?" }}--></a>
-                        </form>
-                    </div>
+<head>
+    <title>Login | MU Community Garden</title>
+    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
+    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
+    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
+    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="cloud-container" style="height:100%;">
+        <div class="w3-top">
+            <div class="w3-bar w3-mobile" style="background-color:#69B3E7">
+                <img src="C:\Users\Summit\github repos\MUCommunityGarden\public\logo.png" class="w3-bar-item" style="height:65px;">
+                <div style="width:80%; margin:auto; padding:10px;">
                 </div>
-                <!--<script src="scripts/loginApp.js"></script>-->
             </div>
         </div>
-    </body>
+        <br>
+        <br>
+        <br>
+        <div style="width:30%; height:100%; margin:auto; padding:20px;">
+            <div class="custom-format">
+                <div id="login-app">
+                    <h2 class="custom-format-header">MU Community Garden<br>{{ mode == "login" ? "Login" : "Signup" }}</h2>
+                    <form class="custom-format-container" method="POST" action="/login">
+                        <label>Username</label>
+                        <input name="name" type="text" placeholder="Username" minlength="5" required>
+                        <label v-if="mode != 'login'">Email</label>
+                        <input name="email" v-if="mode != 'login'" type="email" placeholder="Email" required>
+                        <!--<label v-if="mode != 'login'">Phone number</label>
+                        <input name="phoneNumber" v-if="mode != 'login'" type="tel" placeholder="Phone number" required>-->
+                        <label>Password</label>
+                        <input name="password" type="password" placeholder="Password" minlength="8" required>
+                        <button type="submit">Log in</button>
+                        <br>
+                        <a @click="toggleMode" href="#">{{ mode == "login" ? "sign up?" : "log in?" }}</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/loginApp.js"></script>
+</body>
 </html>

@@ -10,7 +10,9 @@ const userSchema = new mongoose.Schema({
         unique: true
     },
     phoneNumber: String,
-    password: String
+    password: String,
+    receiveSMSNotifications: { type: Boolean, default: true },
+    receiveEmailNotifications: { type: Boolean, default: true }
 });
 
 userSchema.virtual("posts", {
