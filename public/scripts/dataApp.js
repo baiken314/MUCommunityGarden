@@ -55,11 +55,11 @@ async function toggleApproveVolunteerHours(args, dataApp) {}
 async function createGarden(args, dataApp) {}
 async function deleteGarden(args, dataApp) {}
 async function assignGardenToUser(args, dataApp) {}
+async function removeGardenFromUser(args, dataApp) {}
 
 async function createEvent(args, dataApp) {}
 async function updateEvent(args, dataApp) {}
 async function deleteEvent(args, dataApp) {}
-
 
 
 /*********
