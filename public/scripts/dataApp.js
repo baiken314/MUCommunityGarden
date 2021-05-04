@@ -16,6 +16,26 @@ async function updateDataApp(dataApp) {
     dataApp.tasks = userSession.tasks;
 }
 
+async function makePost(args, dataApp) {
+
+    args.user = dataApp.user._id;
+
+    const req = await fetch(URL + "/", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(args)
+    });
+    const res = await playerAttackRequest.json();
+
+    console.log(res);
+
+    window.location = URL + "/forum";
+
+}
+
 let dataApp = new Vue({
     el: "#data-app",
     data: {

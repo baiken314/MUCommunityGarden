@@ -35,7 +35,7 @@ router.route("/create").post(async (req, res) => {
     }).save();
 
     console.log(`User ${user._id} created a post`);
-    res.json(post);
+    res.json({ post: post });
 });
 
 /**
