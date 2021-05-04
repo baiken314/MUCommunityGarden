@@ -127,12 +127,19 @@ app.get("/volunteer", (req, res) => {
 app.get("/user-session", async (req, res) => {
     console.log("GET user-session");
 
+    console.log(req.session);
+
     if (req.session.user == null) {
         res.redirect("/login");
         return;
     }
 
     let user = await User.findOne({ _id: req.session.user._id });
+
+    if (user == null || user == undefined) {
+        res.redirect("/login");
+        return;
+    }
 
     user.password = undefined;
 
@@ -163,6 +170,7 @@ app.post("/login", async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
+            type: "user",
             posts: [],
             gardens: [],
             tasks: []

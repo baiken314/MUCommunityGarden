@@ -1,133 +1,133 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	    <title>Announcements | MU Community Garden</title>
-	    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
-	    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
-	    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
-	    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
-	    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
-	    <!--<script src="/socket.io/socket.io.js"></script>-->
-	</head>
-	<body>
-		<div id="cloud-container" style="height:100%;">
-			<div class="w3-top">
-				<div class="w3-bar w3-mobile" style="background-color:#69B3E7">
-					<img src="C:\Users\Summit\github repos\MUCommunityGarden\public\logo.png" class="w3-bar-item" style="height:65px;">
-					<div style="width:80%; margin:auto; padding:10px;">
-						<b>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button w3-blue">Announcements</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button">Message Board</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button">Volunteer Log</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button w3-right">Logout</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button w3-right">My User</a>
-						</b>
-					</div>
+<head>
+	<title>Announcements | MU Community Garden</title>
+	<link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
+	<link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
+	<link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
+	<link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="cloud-container" style="height:100%;">
+		<div class="w3-top">
+			<div class="w3-bar w3-mobile" style="background-color:#69B3E7">
+				<img src="C:\Users\Summit\github repos\MUCommunityGarden\public\logo.png" class="w3-bar-item" style="height:65px;">
+				<div style="width:80%; margin:auto; padding:10px;">
+					<b>
+						<a href="/announcements" style="font-size:20px" class="w3-bar-item w3-button">Announcements</a>
+						<a href="/forum" style="font-size:20px" class="w3-bar-item w3-button">Message Board</a>
+						<a href="/volunteer" style="font-size:20px" class="w3-bar-item w3-button">Volunteer Log</a>
+						<a href="/logout" style="font-size:20px" class="w3-bar-item w3-button w3-right">Logout</a>
+						<a href="/userpage" style="font-size:20px" class="w3-bar-item w3-button w3-right w3-blue">My User</a>
+					</b>
 				</div>
 			</div>
-			<br>
-			<br>
-			<br>
-			<div class="custom-format" style="width:80%; height:100%; margin:auto; padding:20px;">
-				<h1 class="custom-format-header">Announcements</h1>
-				<div class="w3-row w3-mobile">
-					<div class="w3-column w3-left w3-half">
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="custom-format" style="width:80%; height:100%; margin:auto; padding:20px;">
+			<h1 class="custom-format-header">Announcements</h1>
+			<div class="w3-row w3-mobile">
+				<div class="w3-column w3-left w3-half">
+					<div class="custom-format-container">
+						<h3 class="custom-format-header">Messages From The Admins</h3>
 						<div class="custom-format-container">
-							<h3 class="custom-format-header">Messages From The Admins</h3>
 							<div class="custom-format-container">
+								<h4 class="custom-format-header" style="text-align:left;">Peppers Collection Day - May 5, 2021</h4>
 								<div class="custom-format-container">
-									<h4 class="custom-format-header" style="text-align:left;">Peppers Collection Day - May 5, 2021</h4>
-									<div class="custom-format-container">
-										<div class="post-info">
-											Created by: Robin Mama on 4/23/2021
-										</div>
-										<div class="post">
-											Hey everyone, we're collecting peppers from the community volunteer plots on May 5 for the food banks, and we can use all the help we can get! You can see a reminder on the calendar to the right! Just click it to be brought back to this announcement.
-										</div>
+									<div class="post-info">
+										Created by: Robin Mama on 4/23/2021
+									</div>
+									<div class="post">
+										Hey everyone, we're collecting peppers from the community volunteer plots on May 5 for the food banks, and we can use all the help we can get! You can see a reminder on the calendar to the right! Just click it to be brought back to this announcement.
 									</div>
 								</div>
+							</div>
+							<div class="custom-format-container">
+								<h4 class="custom-format-header" style="text-align:left;">Available Personal Garden Plots</h4>
 								<div class="custom-format-container">
-									<h4 class="custom-format-header" style="text-align:left;">Available Personal Garden Plots</h4>
-									<div class="custom-format-container">
-										<div class="post-info">
-											Created by: Giovanna Bonadonna on 4/10/2021
-										</div>
-										<div class="post">
-											This is just to let all gardeners know that we currently have 4 unclaimed plots: 6, 13, 24, and 26. Please contact me if you're interested in claiming one for this planting season! This announcement does not have a specific date, so it will not show up in the calendar.
-										</div>
+									<div class="post-info">
+										Created by: Giovanna Bonadonna on 4/10/2021
+									</div>
+									<div class="post">
+										This is just to let all gardeners know that we currently have 4 unclaimed plots: 6, 13, 24, and 26. Please contact me if you're interested in claiming one for this planting season! This announcement does not have a specific date, so it will not show up in the calendar.
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="w3-column w3-right w3-half">
+				</div>
+				<div class="w3-column w3-right w3-half">
+					<div class="custom-format-container">
+						<h3 class="custom-format-header">Events Calendar</h3>
 						<div class="custom-format-container">
-							<h3 class="custom-format-header">Events Calendar</h3>
-							<div class="custom-format-container">
-								<div class="month">
-									<ul>
-										<li class="prev">&#10094;</li>
-										<li class="next">&#10095;</li>
-										<b><li>May<br><span style="font-size:30px">2021</span></li></b>
-									</ul>
-								</div>
-
-								<ul class="weekdays">
-									<b>
-									<li>Sun</li>
-									<li>Mon</li>
-									<li>Tue</li>
-									<li>Wed</li>
-									<li>Thu</li>
-									<li>Fri</li>
-									<li>Sat</li>
-									</b>
-								</ul>
-
-								<ul class="days" style="text-align: left;">
-									<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">1</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">2</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">3</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">4</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">5</h5><div class="custom-format-container"><a href="#">Peppers coll...</a></div></li>
-									<li><h5 class="custom-format-header">6</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">7</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">8</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">9</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header"><span class="active">10</span></h5><div class="custom-format-container">_</div>
-									<li><h5 class="custom-format-header">11</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">12</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">13</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">14</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">15</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">16</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">17</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">18</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">19</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">20</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">21</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">22</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">23</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">24</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">25</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">26</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">27</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">28</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">29</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">30</h5><div class="custom-format-container">_</div></li>
-									<li><h5 class="custom-format-header">31</h5><div class="custom-format-container">_</div></li>
+							<div class="month">
+								<ul>
+									<li class="prev">&#10094;</li>
+									<li class="next">&#10095;</li>
+									<b><li>May<br><span style="font-size:30px">2021</span></li></b>
 								</ul>
 							</div>
+
+							<ul class="weekdays">
+								<b>
+								<li>Sun</li>
+								<li>Mon</li>
+								<li>Tue</li>
+								<li>Wed</li>
+								<li>Thu</li>
+								<li>Fri</li>
+								<li>Sat</li>
+								</b>
+							</ul>
+
+							<ul class="days" style="text-align: left;">
+								<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">_</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">1</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">2</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">3</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">4</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">5</h5><div class="custom-format-container"><a href="#">Peppers coll...</a></div></li>
+								<li><h5 class="custom-format-header">6</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">7</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">8</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">9</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header"><span class="active">10</span></h5><div class="custom-format-container">_</div>
+								<li><h5 class="custom-format-header">11</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">12</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">13</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">14</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">15</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">16</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">17</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">18</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">19</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">20</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">21</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">22</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">23</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">24</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">25</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">26</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">27</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">28</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">29</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">30</h5><div class="custom-format-container">_</div></li>
+								<li><h5 class="custom-format-header">31</h5><div class="custom-format-container">_</div></li>
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>
