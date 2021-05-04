@@ -1,87 +1,87 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Message Board | MU Community Garden</title>
-        <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
-	    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
-	    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
-	    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
-    </head>
-    <body>
-        <div id="cloud-container" style="height:100%;">
-            <div class="w3-top">
-				<div class="w3-bar w3-mobile" style="background-color:#69B3E7">
-					<img src="C:\Users\Summit\github repos\MUCommunityGarden\public\logo.png" class="w3-bar-item" style="height:65px;">
-					<div style="width:80%; margin:auto; padding:10px;">
-						<b>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button">Announcements</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button w3-blue">Message Board</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button">Volunteer Log</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button w3-right">Logout</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button w3-right">My User</a>
-						</b>
-					</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-            <div style="width:60%; margin:auto; padding:20px;">
-                <div id="data-app" class="custom-format">
-                    <h1 class="custom-format-header">Message Board</h1>
+<head>
+    <title>Message Board | MU Community Garden</title>
+    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
+    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
+    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
+    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
+</head>
+<body>
+    <div id="cloud-container" style="height:100%;">
+        <div class="w3-top">
+            <div class="w3-bar w3-mobile" style="background-color:#69B3E7">
+                <img src="C:\Users\Summit\github repos\MUCommunityGarden\public\logo.png" class="w3-bar-item" style="height:65px;">
+                <div style="width:80%; margin:auto; padding:10px;">
+                    <b>
+                        <a href="/announcements" style="font-size:20px" class="w3-bar-item w3-button">Announcements</a>
+                        <a href="/forum" style="font-size:20px" class="w3-bar-item w3-button">Message Board</a>
+                        <a href="/volunteer" style="font-size:20px" class="w3-bar-item w3-button">Volunteer Log</a>
+                        <a href="/logout" style="font-size:20px" class="w3-bar-item w3-button w3-right">Logout</a>
+                        <a href="/userpage" style="font-size:20px" class="w3-bar-item w3-button w3-right w3-blue">My User</a>
+                    </b>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="width:60%; margin:auto; padding:20px;">
+            <div id="data-app" class="custom-format">
+                <h1 class="custom-format-header">Message Board</h1>
+                <div class="custom-format-container">
+                    <!--<li v-for="post in posts" :key="post.title">
+                        <h3 class="custom-format-header">{{post.title}}</h3>
+                        <div class="list">
+                            {{post.content}}
+                        </div>
+                    </li> -->    
                     <div class="custom-format-container">
-                        <!--<li v-for="post in posts" :key="post.title">
-                            <h3 class="custom-format-header">{{post.title}}</h3>
-                            <div class="list">
-                                {{post.content}}
-                            </div>
-                        </li> -->    
+                        <h4 class="custom-format-header" style="text-align:left"><a href="#">Tomato Pests, Please Help Me!</a></h4>
                         <div class="custom-format-container">
-                            <h4 class="custom-format-header" style="text-align:left"><a href="#">Tomato Pests, Please Help Me!</a></h4>
-                            <div class="custom-format-container">
-                                <div class="post-info">
-                                    Created by: Kevin Pecci on 5/23/2021
-                                </div>
-                                <div class="post">
-                                    Recently I've noticed my tomato plants in plot 5 have been getting eaten alive by aphids! Does anyone know a good way to keep these bothersome bugs off my precious plants?
-                                </div>
-                                <div class ="viewbutton">
-                                    <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW 10 COMMENTS</button></a>
-                                </div>
+                            <div class="post-info">
+                                Created by: Kevin Pecci on 5/23/2021
+                            </div>
+                            <div class="post">
+                                Recently I've noticed my tomato plants in plot 5 have been getting eaten alive by aphids! Does anyone know a good way to keep these bothersome bugs off my precious plants?
+                            </div>
+                            <div class ="viewbutton">
+                                <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW 10 COMMENTS</button></a>
                             </div>
                         </div>
+                    </div>
+                    <div class="custom-format-container">
+                        <h4 class="custom-format-header" style="text-align:left"><a href="#">Groundhog Grabbing Gourds</a></h4>
                         <div class="custom-format-container">
-                            <h4 class="custom-format-header" style="text-align:left"><a href="#">Groundhog Grabbing Gourds</a></h4>
-                            <div class="custom-format-container">
-                                <div class="post-info">
-                                    Created by: Noah Rottler-Gurley on 4/29/2021
-                                </div>
-                                <div class="post">
-                                    I was very excited for my squash in plot 1 to be ready to harvest, but when I got to the garden, I saw a groundhog scooting under the fence with my squash in tow. To protect ourselves from this thief we should look into reinforcing the fence or making it run deeper.
-                                </div>   
-                                <div class ="viewbutton">
-                                    <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW 5 COMMENTS</button></a>
-                                </div>
+                            <div class="post-info">
+                                Created by: Noah Rottler-Gurley on 4/29/2021
+                            </div>
+                            <div class="post">
+                                I was very excited for my squash in plot 1 to be ready to harvest, but when I got to the garden, I saw a groundhog scooting under the fence with my squash in tow. To protect ourselves from this thief we should look into reinforcing the fence or making it run deeper.
+                            </div>   
+                            <div class ="viewbutton">
+                                <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW 5 COMMENTS</button></a>
                             </div>
                         </div>
+                    </div>
+                    <div class="custom-format-container">
+                        <h4 class="custom-format-header" style="text-align:left"><a href="#">Perfect gardening weather on Saturday!</a></h4>
                         <div class="custom-format-container">
-                            <h4 class="custom-format-header" style="text-align:left"><a href="#">Perfect gardening weather on Saturday!</a></h4>
-                            <div class="custom-format-container">
-                                <div class="post-info">
-                                    Created by: Bradley Aiken on 4/15/2021
-                                </div>
-                                <div class="post">
-                                    The forecast for this Saturday is sunny and 82°, perfect weather to get your late Spring plants in the ground. ☀️
-                                </div>   
-                                <div class ="viewbutton">
-                                    <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW 3 COMMENTS</button></a>
-                                </div>
+                            <div class="post-info">
+                                Created by: Bradley Aiken on 4/15/2021
+                            </div>
+                            <div class="post">
+                                The forecast for this Saturday is sunny and 82°, perfect weather to get your late Spring plants in the ground. ☀️
+                            </div>   
+                            <div class ="viewbutton">
+                                <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW 3 COMMENTS</button></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--<script src="scripts/dataApp.js"></script>-->
             </div>
+            <!--<script src="scripts/dataApp.js"></script>-->
         </div>
-    </body>
+    </div>
+</body>
 </html>
