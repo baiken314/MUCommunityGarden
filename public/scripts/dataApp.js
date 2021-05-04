@@ -2,21 +2,19 @@ const socket = io();
 
 const URL = "http://" + window.location.host;
 
-// grab game information from the player-session and load into gameApp
-async function updateDataApp() {
+// grab all information for a user
+async function updateDataApp(dataApp) {
     console.log("updateGameApp in dataApp.js");
 
     const userSessionRequest = await fetch(URL + "/user-session");
     const userSession = await userSessionRequest.json();
 
     dataApp.user = userSession.user;
-    dataApp.events = userSession.evemts;
+    dataApp.events = userSession.events;
     dataApp.gardens = userSession.gardens;
     dataApp.posts = userSession.posts;
     dataApp.tasks = userSession.tasks;
 }
-
-socket.on("updateDataApp", updateDataApp);
 
 let dataApp = new Vue({
     el: "#data-app",
@@ -32,4 +30,7 @@ let dataApp = new Vue({
     }
 });
 
-updateDataApp();
+socket.on("updateDataApp", updateDataApp(dataApp));
+
+// init
+updateDataApp(dataApp);
