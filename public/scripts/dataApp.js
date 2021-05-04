@@ -2,6 +2,10 @@ const socket = io();
 
 const URL = "http://" + window.location.host;
 
+
+/************
+ * API CALLS
+ ************/
 // grab all information for a user
 async function updateDataApp(dataApp) {
     console.log("updateGameApp in dataApp.js");
@@ -16,11 +20,12 @@ async function updateDataApp(dataApp) {
     dataApp.tasks = userSession.tasks;
 }
 
-async function makePost(args, dataApp) {
-
+async function createPost(args, dataApp) {
     args.user = dataApp.user._id;
 
-    const req = await fetch(URL + "/", {
+    console.log(args);
+
+    const req = await fetch(URL + "/post/create", {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -28,14 +33,38 @@ async function makePost(args, dataApp) {
         },
         body: JSON.stringify(args)
     });
-    const res = await playerAttackRequest.json();
+    const res = await req.json();
 
-    console.log(res);
-
-    window.location = URL + "/forum";
-
+    console.log("END makePost " + res);
 }
 
+async function updatePost(args, dataApp) {}
+async function deletePost(args, dataApp) {}
+async function likePost(args, dataApp) {}
+
+async function createTask(args, dataApp) {}
+async function updateTask(args, dataApp) {}
+async function deleteTask(args, dataApp) {}
+async function toggleCompleteTask(args, dataApp) {}
+
+async function logVolunteerHours(args, dataApp) {}
+
+// below functions for admins
+async function toggleApproveVolunteerHours(args, dataApp) {}
+
+async function createGarden(args, dataApp) {}
+async function deleteGarden(args, dataApp) {}
+async function assignGardenToUser(args, dataApp) {}
+
+async function createEvent(args, dataApp) {}
+async function updateEvent(args, dataApp) {}
+async function deleteEvent(args, dataApp) {}
+
+
+
+/*********
+ * VUE APP
+ *********/
 let dataApp = new Vue({
     el: "#data-app",
     data: {
@@ -50,7 +79,19 @@ let dataApp = new Vue({
     }
 });
 
+
+/*****************
+ * SOCKET.IO CALLS
+ *****************/
 socket.on("updateDataApp", updateDataApp(dataApp));
 
-// init
+
+/*********************************
+ * DOM UPDATES AND EVENT LISTENERS 
+ *********************************/
+
+
+/******
+ * INIT
+ ******/
 updateDataApp(dataApp);
