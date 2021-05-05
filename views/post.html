@@ -36,7 +36,7 @@
 						<hr>
 						<div class="w3-container" style="text-align:left">
 							<h3>by {{ currentPost.user.name }}</h3>
-							<h4>{{ currentPost.date.toLocaleString() }}</h4>
+							<h4>{{ new Date(currentPost.date).toLocaleString() }}</h4>
 							<p>{{ currentPost.content }}</p>
 							<div class="w3-row">
 								<h4 @click="likePostFromPostPage()" class="w3-light-blue w3-round w3-hover-white pointer-button w3-padding w3-left w3-col" style="width:15%;">❤️{{ currentPost.likedBy.length }} - Like</h4>
@@ -53,7 +53,7 @@
 						<hr>
 						<div v-for="comment in currentPost.comments"  class="w3-container" style="text-align:left">
 							<h3>by {{ comment.user.name }}</h3>
-							<h4>{{ comment.date }}</h4>
+							<h4>{{ new Date(comment.date).toLocaleString() }}</h4>
 							<p>{{ comment.content }}</p>
 							<button v-if="user.name == comment.user.name || user.type == 'admin'" @click="deleteCommentFromPostPage(comment._id)" class="w3-black w3-left w3-round pointer-button w3-hover-dark-gray w3-padding">Delete Comment</button>
 						</div>

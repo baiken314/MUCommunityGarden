@@ -42,7 +42,7 @@
                         <h4 class="custom-format-header" style="text-align:left"><a v-bind:href="`/post/view/${ post._id }`">{{ post.title }}</a></h4>
                         <div class="custom-format-container">
                             <div class="post-info">
-                                Created by: {{ user.name }} on {{ post.date.toLocaleString() }}
+                                Created by: {{ user.name }} on {{ new Date(post.date).toLocaleString() }}
                             </div>
                             <div class="post">
                                 {{ post.content }}

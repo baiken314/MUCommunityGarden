@@ -83,7 +83,7 @@
                                             {{ task.title }}
                                         </td>
                                         <td v-for="task in tasks" :key="task.completedDate">
-                                            {{ task.completedDate }}
+                                            {{  new Date(task.completedDate).toLocaleString() }}
                                         </td>
                                         <td v-for="task in tasks" :key="task.garden">
                                             {{ task.garden }}

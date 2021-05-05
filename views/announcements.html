@@ -45,7 +45,7 @@
 								<h4 class="custom-format-header" style="text-align:left;">{{post.title}}</h4>
 								<div class="custom-format-container">
 									<div class="post-info">
-										Created by: {{post.user.name}} on {{post.date}}
+										Created by: {{post.user.name}} on {{  new Date(post.date).toLocaleString()  }}
 									</div>
 									<div class="post">
 										{{post.content}}
