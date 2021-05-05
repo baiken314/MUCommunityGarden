@@ -144,7 +144,7 @@ app.get("/user-session", async (req, res) => {
     user.password = undefined;
 
     res.json({
-        events: await Event.find(),
+        events: await Event.find().sort({ date: -1 }),
         gardens: await Garden.find(),
         posts: await Post.find({ parent: undefined }).sort({ date: -1 }),
         tasks: await Task.find(),
