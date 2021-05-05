@@ -28,7 +28,7 @@
 		<br>
 		<br>
 		<br>
-		<div class="custom-format" style="width:30%; height:100%; margin:auto; padding:20px;">
+		<div id="data-app" class="custom-format" style="width:30%; height:100%; margin:auto; padding:20px;">
 			<div class="custom-format-container">
 				<!--<button class="w3-black w3-round w3-hover-dark-gray" style="margin:auto;"><<< Click here to go back to all message board posts. <<<</button>-->
 				<br>
@@ -38,20 +38,20 @@
 						<hr>
 						<div class="w3-container" style="text-align:left">
 							<p>Post title:</p>
-							<input class="w3-input w3-border w3-light-grey" type="text" style="height:50px" placeholder="Write your post title here">
+							<input v-model="title" class="w3-input w3-border w3-light-grey" type="text" style="height:50px" placeholder="Write your post title here">
 							<p>Tags (separated by comma):</p>
-							<input class="w3-input w3-border w3-light-grey" type="text" style="height:50px" placeholder="ex. 'tomatoes, watering'">
-							<div v-if="user.type == 'admin'">
+							<input v-model="tags" class="w3-input w3-border w3-light-grey" type="text" style="height:50px" placeholder="ex. 'tomatoes, watering'">
+							<div v-if="user.type != 'admin'">
 								<p>Make post an annoucement (sends notification to gardeners): </p>
-								<input class="w3-check" type="checkbox">
+								<input v-model="isAnnouncement" class="w3-check" type="checkbox">
 							</div>
 							<p>Post content:</p>
-							<input class="w3-input w3-border w3-light-grey" type="text" style="height:150px" placeholder="Write your post here">
+							<input v-model="content" class="w3-input w3-border w3-light-grey" type="text" style="height:150px" placeholder="Write your post here">
 						</div>
 						<br>
 						<hr>
 					</div>
-					<button class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Submit your post</button>
+					<button @click="makePost" class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Submit your post</button>
 				</div>
 				<br>
 			</b>
