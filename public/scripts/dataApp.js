@@ -40,10 +40,6 @@ async function createPost(args, dataApp) {
     });
     const res = await req.json();
 
-    const postsReq = await fetch(URL + "/post");
-    const postsRes = await postsReq.json();
-    dataApp.posts = postsRes;
-
     console.log("END makePost " + res);
 }
 
@@ -64,10 +60,6 @@ async function updatePost(args, dataApp) {
         body: JSON.stringify(args)
     });
     const res = await req.json();
-
-    const postsReq = await fetch(URL + "/post");
-    const postsRes = await postsReq.json();
-    dataApp.posts = postsRes;
 
     console.log("END updatePost " + res);
 }
@@ -90,10 +82,6 @@ async function deletePost(args, dataApp) {
     });
     const res = await req.json();
 
-    const postsReq = await fetch(URL + "/post");
-    const postsRes = await postsReq.json();
-    dataApp.posts = postsRes;
-
     console.log("END deletePost " + res);
 }
 
@@ -115,10 +103,6 @@ async function likePost(args, dataApp) {
     });
     const res = await req.json();
 
-    const postsReq = await fetch(URL + "/post");
-    const postsRes = await postsReq.json();
-    dataApp.posts = postsRes;
-
     console.log("END likePost " + res);
 }
 
@@ -127,7 +111,9 @@ async function updateTask(args, dataApp) {}
 async function deleteTask(args, dataApp) {}
 async function toggleCompleteTask(args, dataApp) {}
 
-async function logVolunteerHours(args, dataApp) {}
+async function logVolunteerHours(args, dataApp) {
+
+}
 
 // below functions for admins
 async function toggleApproveVolunteerHours(args, dataApp) {}
@@ -171,6 +157,7 @@ let dataApp = new Vue({
             }, this);
             window.location = URL + "/forum";
         },
+
         createComment: async function () {
             await createPost({
                 user: this.user._id,
@@ -182,6 +169,16 @@ let dataApp = new Vue({
             }, this);
             this.content = null;
             updateDataApp(dataApp);
+        },
+
+        likePost: async function () {
+            await likePost({}, this);
+        },
+
+        // this should only be available to users that are looking at their own post or whose type == "admin"
+        deletePost: async function () {
+            await deletePost({}, this);
+            window.location = URL + "/forum";
         }
     }
 });
