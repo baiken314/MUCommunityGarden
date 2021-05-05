@@ -18,9 +18,12 @@ async function updateDataApp(dataApp) {
     dataApp.gardens = userSession.gardens;
     dataApp.posts = userSession.posts;
     dataApp.tasks = userSession.tasks;
+    dataApp.currentPost = userSession.currentPost;
 }
 
 async function createPost(args, dataApp) {
+    console.log("BEGIN createPost");
+
     args.user = dataApp.user._id;
 
     console.log(args);
@@ -38,8 +41,48 @@ async function createPost(args, dataApp) {
     console.log("END makePost " + res);
 }
 
-async function updatePost(args, dataApp) {}
-async function deletePost(args, dataApp) {}
+async function updatePost(args, dataApp) {
+    console.log("BEGIN updatePost");
+
+    args.user = dataApp.user._id;
+    args.post = dataApp.currentPost._id;
+
+    console.log(args);
+
+    const req = await fetch(URL + "/post/update", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(args)
+    });
+    const res = await req.json();
+
+    console.log("END updatePost " + res);
+}
+
+async function deletePost(args, dataApp) {
+    console.log("BEGIN deletePost");
+
+    args.user = dataApp.user._id;
+    args.posts = [dataApp.currentPost._id];
+
+    console.log(args);
+
+    const req = await fetch(URL + "/post/update", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(args)
+    });
+    const res = await req.json();
+
+    console.log("END deletePost " + res);
+}
+
 async function likePost(args, dataApp) {}
 
 async function createTask(args, dataApp) {}
@@ -72,7 +115,8 @@ let dataApp = new Vue({
         events: {},
         gardens: {},
         posts: {},
-        tasks: {}
+        tasks: {},
+        currentPost: {}  // used for post.html
     },
     methods: {
 

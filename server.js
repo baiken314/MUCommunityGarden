@@ -148,8 +148,30 @@ app.get("/user-session", async (req, res) => {
         gardens: await Garden.find(),
         posts: await Post.find(),
         tasks: await Task.find(),
-        user: user
+        user: user,
+        currentPost: await Post.findOne({ _id: req.session.currentPost }) || null
     });
+});
+
+// post.html
+app.get("/post/view/:id", async (req, res) => {
+    console.log("GET post/view/");
+
+    if (req.session.user == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    let post = await Post.findOne({ _id: req.params._id });
+
+    if (post == null || post == undefined) {
+        res.redirect("/forum");
+        return;
+    }
+
+    req.session.currentPost = post._id;
+
+    res.sendFile(__dirname + "/views/post.html"); 
 });
 
 
