@@ -49,6 +49,10 @@
                                 </a>
                             </div>
                         </div>
+                        <div v-if="user == post.user">
+                            <button class="w3-red w3-right w3-round w3-hover-dark-gray">Delete this post</button>
+                            &nbsp;
+                        </div>
                     </div>
                 </div>
             </div>
