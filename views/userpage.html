@@ -1,127 +1,104 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>My User | MU Community Garden</title>
-        <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
-	    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
-	    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
-	    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
-        <!--<script src="/socket.io/socket.io.js"></script>-->
-        <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
-    </head>
-    <body>
-        <div id="cloud-container" style="height:100%;">
-            <div class="w3-top">
-				<div class="w3-bar w3-mobile" style="background-color:#69B3E7">
-					<img src="C:\Users\Summit\github repos\MUCommunityGarden\public\logo.png" class="w3-bar-item" style="height:65px;">
-					<div style="width:80%; margin:auto; padding:10px;">
-						<b>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button">Announcements</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button">Message Board</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button">Volunteer Log</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button w3-right">Logout</a>
-						<a href="#" style="font-size:20px" class="w3-bar-item w3-button w3-right w3-blue">My User</a>
-						</b>
-					</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-            <div style="width:60%; height:100%; margin:auto; padding:20px;">
-                <div id="data-app" class="custom-format">
+<head>
+    <title>My User | MU Community Garden</title>
+    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\GardenStyle.css">
+    <link rel="stylesheet" type ="text/css" href="D:\School\Fall2020\Thesis\MUCommunityGarden\public\css\w3.css">
+    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\w3.css">
+    <link rel="stylesheet" href="C:\Users\Summit\github repos\MUCommunityGarden\public\css\GardenStyle.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="cloud-container" style="height:100%;">
+        <div class="w3-top">
+            <div class="w3-bar w3-mobile" style="background-color:#69B3E7">
+                <img src="logo.png" class="w3-bar-item" style="height:65px;">
+                <div style="width:80%; margin:auto; padding:10px;">
+                    <b>
+                    <a href="/announcements" style="font-size:20px" class="w3-bar-item w3-button">Announcements</a>
+                    <a href="/forum" style="font-size:20px" class="w3-bar-item w3-button">Message Board</a>
+                    <a href="/volunteer" style="font-size:20px" class="w3-bar-item w3-button">Volunteer Log</a>
+                    <a href="/logout" style="font-size:20px" class="w3-bar-item w3-button w3-right">Logout</a>
+                    <a href="/userpage" style="font-size:20px" class="w3-bar-item w3-button w3-right w3-blue">My User</a>
+                    </b>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div style="width:60%; height:100%; margin:auto; padding:20px;">
+            <div id="data-app" class="custom-format">
+                <div class="custom-format-container">
+                    <h1 class="user-header w3-container w3-margin">Welcome, {{user.name}}</h1>
                     <div class="custom-format-container">
-                        <h1 class="custom-format-header w3-container w3-margin">Welcome, {{user.name}}</h1>
+                        <h3 class="custom-format-header">Events</h3>
                         <div class="custom-format-container">
-                            <h3 class="custom-format-header">Events</h3>
-                            <div class="custom-format-container">
-                                <div class="list">
-                                    <table class="w3-table-all">
-                                        <tr>
-                                            <td v-for="event in events" :key="event.start">
-                                                {{ event.title }}
-                                            </td>
-                                            <td v-for="event in events" :key="event.start">
-                                                {{ event.start }}
-                                            </td>
-                                            <td v-for="event in events" :key="event.end">
-                                                {{ event.end }}
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+                            <div class="list">
+                                <table class="w3-table-all">
+                                    <tr>
+                                        <td v-for="event in events" :key="event.start">
+                                            {{ event.title }}
+                                        </td>
+                                        <td v-for="event in events" :key="event.start">
+                                            {{ event.start }}
+                                        </td>
+                                        <td v-for="event in events" :key="event.end">
+                                            {{ event.end }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Title</td>
+                                        <td>Start Date</td>
+                                        <td>End Date</td>
+                                    </tr>
+                                </table>
                             </div>
-                            <h3 class="custom-format-header">Your Garden Plots</h3>
-                            <div class="custom-format-container">
-                                <div class="list">
-                                    <table class="w3-table-all">
-                                        <!-- <tr>
-                                            <td v-for="garden in gardens" :key="garden.plot">
-                                                {{ garden.plot }}
-                                            </td>
-                                            <td v-for="garden in gardens" :key="garden.user">
-                                                {{ garden.user }}
-                                            </td>
-                                        </tr> -->
-                                        <tr>
-                                            <td>Plot Number</td>
-                                            <td>Crop 1</td>
-                                            <td>Crop 2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>Peppers</td>
-                                            <td>Carrots</td>
-                                        </tr>
-                                        <tr>
-                                            <td>9</td>
-                                            <td>Tomatoes</td>
-                                            <td>N/A</td>
-                                        </tr>
-                                    </table>        
-                                </div>
+                        </div>
+                        <h3 class="custom-format-header">Your Garden Plots</h3>
+                        <div class="custom-format-container">
+                            <div class="list">
+                                <table class="w3-table-all">
+                                    <tr>
+                                        <td v-for="garden in gardens" :key="garden.plot">
+                                            {{ garden.plot }}
+                                        </td>
+                                        <td v-for="garden in gardens" :key="garden.user">
+                                            {{ garden.user }}
+                                        </td>
+                                    </tr>
+                                </table>        
                             </div>
-                            <h3 class="custom-format-header">Current Volunteer Tasks</h3>
-                            <div class="custom-format-container">
-                                <div class="list">
-                                    <table class="w3-table-all">
-                                        <tr>
-                                            <td>Title</td>
-                                            <td>Start Date</td>
-                                            <td>End Date</td>
-                                        </tr>
-                                        <tr>
-                                            <!-- <td v-for="task in tasks" :key="task.title"> this should be moved to the row to iterate better
-                                                {{ task.title }}
-                                            </td>
-                                            <td v-for="task in tasks" :key="task.completedDate">
-                                                {{ task.completedDate }}
-                                            </td>
-                                            <td v-for="task in tasks" :key="task.garden">
-                                                {{ task.garden }}
-                                            </td> -->
-                                            <td>Pull weeds</td>
-                                            <td>4/21/21</td>
-                                            <td>4/28/21</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Harvest Peppers</td>
-                                            <td>4/15/21</td>
-                                            <td>4/17/21</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Water Plot 3</td>
-                                            <td>4/12/21</td>
-                                            <td>4/12/21</td>
-                                        </tr>
-                                    </table>
-                                </div>
+                        </div>
+                        <h3 class="custom-format-header">Current Volunteer Tasks</h3>
+                        <div class="custom-format-container">
+                            <div class="list">
+                                <table class="w3-table-all">
+                                    <tr>
+                                        <td>Title</td>
+                                        <td>Start Date</td>
+                                        <td>End Date</td>
+                                    </tr>
+                                    <tr>
+                                        <td v-for="task in tasks" :key="task.title"> this should be moved to the row to iterate better
+                                            {{ task.title }}
+                                        </td>
+                                        <td v-for="task in tasks" :key="task.completedDate">
+                                            {{ task.completedDate }}
+                                        </td>
+                                        <td v-for="task in tasks" :key="task.garden">
+                                            {{ task.garden }}
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <script src="scripts/dataApp.js"></script>
             </div>
         </div>
-    </body>
+    </div>
+    <script src="scripts/dataApp.js"></script>
+</body>
 </html>

@@ -4,6 +4,8 @@ const postSchema = new mongoose.Schema({
     title: String,
     content: String,
     tags: [String],
+    type: String,  // "post", "annoucement"
+
     user: {
         type: mongoose.Schema.ObjectId,
         ref: "User"

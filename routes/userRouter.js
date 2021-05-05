@@ -11,4 +11,11 @@ router.route("/").get(async (req, res) => {
         .populate("events"));
 });
 
+/**
+ * 
+ */
+router.route("/update").post(async (req, res) => {
+
+});
+
 module.exports = router;
