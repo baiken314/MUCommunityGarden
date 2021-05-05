@@ -47,7 +47,6 @@ async function updatePost(args, dataApp) {
     console.log("BEGIN updatePost");
 
     args.user = dataApp.user._id;
-    args.post = dataApp.currentPost._id;
 
     console.log(args);
 
@@ -68,7 +67,7 @@ async function deletePost(args, dataApp) {
     console.log("BEGIN deletePost");
 
     args.user = dataApp.user._id;
-    args.posts = [dataApp.currentPost._id];
+    args.post = [args.post];
 
     console.log(args);
 
@@ -148,36 +147,41 @@ let dataApp = new Vue({
     },
     methods: {
         createPost: async function () {
-            await createPost({
-                user: this.user._id,
-                tags: this.tags.split(/[ ]*,[ ]*/),
-                type: this.isAnnouncement && this.user.type == "admin" ? "announcement" : "post",
-                title: this.title,
-                content: this.content
-            }, this);
-            window.location = URL + "/forum";
+            if (this.title.length && this.content.length) {
+                await createPost({
+                    user: this.user._id,
+                    tags: this.tags.split(/[ ]*,[ ]*/),
+                    type: this.isAnnouncement && this.user.type == "admin" ? "announcement" : "post",
+                    title: this.title,
+                    content: this.content
+                }, this);
+                window.location = URL + "/forum";   
+            }
         },
 
         createComment: async function () {
-            await createPost({
-                user: this.user._id,
-                tags: [],
-                type: "post",
-                title: "",
-                content: this.content,
-                parent: this.currentPost._id
-            }, this);
-            this.content = null;
-            updateDataApp(dataApp);
+            if (this.content.length) {
+                await createPost({
+                    user: this.user._id,
+                    tags: [],
+                    type: "post",
+                    title: "",
+                    content: this.content,
+                    parent: this.currentPost._id
+                }, this);
+                this.content = null;
+                updateDataApp(this);
+            }
         },
 
-        likePost: async function () {
-            await likePost({}, this);
+        likePostFromPostPage: async function () {
+            await likePost({ post: this.currentPost._id }, this);
+            updateDataApp(this);
         },
 
         // this should only be available to users that are looking at their own post or whose type == "admin"
-        deletePost: async function () {
-            await deletePost({}, this);
+        deletePostFromPostPage: async function () {
+            await deletePost({ post: this.currentPost._id }, this);
             window.location = URL + "/forum";
         }
     }
@@ -188,11 +192,6 @@ let dataApp = new Vue({
  * SOCKET.IO CALLS
  *****************/
 socket.on("updateDataApp", updateDataApp(dataApp));
-
-
-/*********************************
- * DOM UPDATES AND EVENT LISTENERS 
- *********************************/
 
 
 /******
