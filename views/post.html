@@ -33,18 +33,20 @@
 				<!--<button class="w3-black w3-round w3-hover-dark-gray" style="margin:auto;"><<< Click here to go back to all message board posts. <<<</button>-->
 				<br>
 				<div class="w3-container">
-					<h2 class="custom-format-header" style="text-align:left"><b>Tomato Pests, Please Help Me!</b></h2>
+					<h2 class="custom-format-header" style="text-align:left"><b>{{post.title}}</b></h2>
 					<div class="custom-format-container">
 						<hr>
 						<div class="w3-container" style="text-align:left">
-							<h3>by Kevin Pecci</h3>
-							<h4>May 23, 2021</h4>
+							<h3>by {{post.user.name}}</h3>
+							<h4>{{post.date}}</h4>
 							<p>
-								Recently I've noticed my tomato plants in plot 5 have been getting eaten alive by aphids! Does anyone know a good way to keep these bothersome bugs off my precious plants?
+								{{post.content}}
 							</p>
-							<img src="https://www.purdue.edu/uns/images/2017/aphid-leaf.jpg" class="w3-padding" style="width:200px">
+							❤️ {{post.likes}}
 						</div>
 						<hr>
+						<button class="w3-light-blue w3-left w3-round w3-hover-white w3-padding">Like this post</button>
+						<button class="w3-red w3-right w3-round w3-hover-dark-gray w3-padding">Delete this post</button>
 					</div>
 				</div>
 				<br>

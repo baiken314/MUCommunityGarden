@@ -37,15 +37,23 @@
 					<div class="custom-format-container">
 						<hr>
 						<div class="w3-container" style="text-align:left">
-							<h3>Posted by: Kevin Pecci</h3>
-							<h4>Posted on: May 23, 2021</h4>
+							<h3>Posted by: {{user.name}}</h3>
+							<h4>Posted on: {{post.date}}</h4> <!--idk what the call is to get the current date-->
 							<p>
 								Post title:
 								<input class="w3-input w3-border w3-light-grey" type="text" style="height:50px" placeholder="Write your post title here">
 							</p>
 							<p>
+								Tags (Separated by commas):
+								<input class="w3-input w3-border w3-light-grey" type="text" style="height:150px" placeholder="Put tags here">
+							</p>
+							<p>
 								Post content:
 								<input class="w3-input w3-border w3-light-grey" type="text" style="height:150px" placeholder="Write your post here">
+							</p>
+							<p>
+								Make post an announcement: <input class="w3-check" type="checkbox">
+								<!-- <input v-if="user.admin == true" type="checkbox"> No way to check if user is an admin yet, mostly a placeholder-->
 							</p>
 						</div>
 						<button class="w3-right w3-round w3-white w3-border w3-border-blue w3-padding w3-hover-light-gray">Add an image from your device</button>
