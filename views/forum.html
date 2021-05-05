@@ -42,7 +42,8 @@
                     <div v-for="post in posts.filter(post => post.parent == null || post.parent == undefined)
                         .filter(post => post.title.toLowerCase().includes(searchString.toLowerCase()) || 
                             post.content.toLowerCase().includes(searchString.toLowerCase()) || 
-                            post.user.name.toLowerCase().includes(searchString.toLowerCase()))" 
+                            post.user.name.toLowerCase().includes(searchString.toLowerCase()))
+                        .slice(0, 50)" 
                         class="custom-format-container">
                         <h4 class="custom-format-header" style="text-align:left"><a v-bind:href="`/post/view/${ post._id }`">{{ post.title }}</a></h4>
                         <div class="custom-format-container">

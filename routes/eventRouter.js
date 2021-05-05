@@ -5,7 +5,7 @@ const router = require("express").Router();
 
 router.route("/").get(async (req, res) => {
     console.log("GET event")
-    res.json(await Event.find().populate("user", "name"));
+    res.json(await Event.find().populate("user", "name -_id").populate("approvedBy", "name -_id"));
 });
 
 /**

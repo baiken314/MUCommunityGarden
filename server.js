@@ -157,9 +157,9 @@ app.get("/user-session", async (req, res) => {
     }
 
     res.json({
-        events: await Event.find().sort({ date: -1 }),
+        events: await Event.find().sort({ date: -1 }).populate("user", "name -_id").populate("approvedBy", "name -_id"),
         gardens: await Garden.find().sort({ number: 1 }),
-        posts: await Post.find({ parent: undefined }).sort({ date: -1 }).populate("user", "name").populate("comments"),
+        posts: await Post.find({ parent: undefined }).sort({ date: -1 }).populate("user", "name -_id").populate("comments"),
         tasks: await Task.find(),
         user: user,
         currentPost: currentPost
