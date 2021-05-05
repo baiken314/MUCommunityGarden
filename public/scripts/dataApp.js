@@ -43,35 +43,35 @@ async function createPost(args, dataApp) {
     console.log("END makePost " + res);
 }
 
-async function updatePost(args, dataApp) {
-    console.log("BEGIN updatePost");
+// async function updatePost(args, dataApp) {
+//     console.log("BEGIN updatePost");
 
-    args.user = dataApp.user._id;
+//     args.user = dataApp.user._id;
 
-    console.log(args);
+//     console.log(args);
 
-    const req = await fetch(URL + "/post/update", {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(args)
-    });
-    const res = await req.json();
+//     const req = await fetch(URL + "/post/update", {
+//         method: "POST",
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(args)
+//     });
+//     const res = await req.json();
 
-    console.log("END updatePost " + res);
-}
+//     console.log("END updatePost " + res);
+// }
 
 async function deletePost(args, dataApp) {
     console.log("BEGIN deletePost");
 
     args.user = dataApp.user._id;
-    args.post = [args.post];
+    args.posts = [args.post];
 
     console.log(args);
 
-    const req = await fetch(URL + "/post/update", {
+    const req = await fetch(URL + "/post/delete", {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -155,7 +155,7 @@ let dataApp = new Vue({
                     title: this.title,
                     content: this.content
                 }, this);
-                window.location = URL + "/forum";   
+                window.location = URL + "/forum";
             }
         },
 
@@ -180,9 +180,15 @@ let dataApp = new Vue({
         },
 
         // this should only be available to users that are looking at their own post or whose type == "admin"
-        deletePostFromPostPage: async function () {
-            await deletePost({ post: this.currentPost._id }, this);
+        deletePostFromPostPage: async function (postID) {
+            await deletePost({ post: postID }, this);
             window.location = URL + "/forum";
+        },
+
+        // this should only be available to users that are looking at their own comment or whose type == "admin"
+        deleteCommentFromPostPage: async function (CommentID) {
+            await deletePost({ post: CommentID }, this);
+            updateDataApp(this);
         }
     }
 });

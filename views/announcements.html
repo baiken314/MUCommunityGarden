@@ -26,32 +26,21 @@
 		<br>
 		<br>
 		<br>
-		<div class="custom-format" style="width:80%; height:100%; margin:auto; padding:20px;">
+		<div id="data-app" class="custom-format" style="width:80%; height:100%; margin:auto; padding:20px;">
 			<h1 class="custom-format-header">Announcements</h1>
 			<div class="w3-row w3-mobile">
 				<div class="w3-column w3-left w3-half">
 					<div class="custom-format-container">
 						<h3 class="custom-format-header">Messages From The Admins</h3>
 						<div class="custom-format-container">
-							<div class="custom-format-container">
-								<h4 class="custom-format-header" style="text-align:left;">Peppers Collection Day - May 5, 2021</h4>
+							<div v-for="post in posts.filter(post => post.type == 'announcement')" class="custom-format-container" class="custom-format-container">
+								<h4 class="custom-format-header" style="text-align:left;">{{post.title}}</h4>
 								<div class="custom-format-container">
 									<div class="post-info">
-										Created by: Robin Mama on 4/23/2021
+										Created by: {{post.user.name}} on {{post.date}}
 									</div>
 									<div class="post">
-										Hey everyone, we're collecting peppers from the community volunteer plots on May 5 for the food banks, and we can use all the help we can get! You can see a reminder on the calendar to the right! Just click it to be brought back to this announcement.
-									</div>
-								</div>
-							</div>
-							<div class="custom-format-container">
-								<h4 class="custom-format-header" style="text-align:left;">Available Personal Garden Plots</h4>
-								<div class="custom-format-container">
-									<div class="post-info">
-										Created by: Giovanna Bonadonna on 4/10/2021
-									</div>
-									<div class="post">
-										This is just to let all gardeners know that we currently have 4 unclaimed plots: 6, 13, 24, and 26. Please contact me if you're interested in claiming one for this planting season! This announcement does not have a specific date, so it will not show up in the calendar.
+										{{post.content}}
 									</div>
 								</div>
 							</div>

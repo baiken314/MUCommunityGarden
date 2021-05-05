@@ -38,10 +38,10 @@
 							<h3>by {{ currentPost.user.name }}</h3>
 							<h4>{{ currentPost.date.toLocaleString() }}</h4>
 							<p>{{ currentPost.content }}</p>
+							<button v-if="user.name == currentPost.user.name || user.type == 'admin'" @click="deletePostFromPostPage(currentPost._id)" class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Delete Post</button>
 						</div>
 						<hr>
 					</div>
-					<button class="w3-red w3-right w3-round w3-hover-dark-gray w3-padding">Delete this post</button>
 				</div>
 				<br>
 				<div class="w3-container w3-padding">
@@ -52,6 +52,7 @@
 							<h3>by {{ comment.user.name }}</h3>
 							<h4>{{ comment.date }}</h4>
 							<p>{{ comment.content }}</p>
+							<button v-if="user.name == comment.user.name || user.type == 'admin'" @click="deleteCommentFromPostPage(comment._id)" class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Delete Comment</button>
 						</div>
 						<hr>
 					</div>
