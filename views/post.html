@@ -28,12 +28,12 @@
 		<br>
 		<br>
 		<br>
-		<div class="custom-format" style="width:60%; height:100%; margin:auto; padding:20px;">
+		<div id="data-app" class="custom-format" style="width:60%; height:100%; margin:auto; padding:20px;">
 			<div class="custom-format-container">
-				<button href="/forum" type="button" class="w3-black w3-round w3-hover-dark-gray" style="margin:auto;"><<< Click here to go back to all message board posts. <<<</button>
+				<!--<button href="/forum" type="button" class="w3-black w3-round w3-hover-dark-gray" style="margin:auto;"><<< Click here to go back to all message board posts. <<<</button>-->
 				<br>
-				<div id="data-app" class="w3-container">
-					<h2 class="custom-format-header" style="text-align:left"><b>Tomato Pests, Please Help Me!</b></h2>
+				<div class="w3-container">
+					<h2 class="custom-format-header" style="text-align:left"><b>{{ currentPost.title }}</b></h2>
 					<div class="custom-format-container">
 						<hr>
 						<div class="w3-container" style="text-align:left">
@@ -46,31 +46,21 @@
 				</div>
 				<br>
 				<div class="w3-container w3-padding">
-					<h2 v-if="currentPost.comments" class="custom-format-header" style="text-align:left"><b>Comments</b></h2>
-					<div v-if="currentPost.comments" v-for="comment in post.comments" class="custom-format-container">
+					<h2 v-if="currentPost.comments.length" class="custom-format-header" style="text-align:left"><b>Comments</b></h2>
+					<div v-if="currentPost.comments.length" class="custom-format-container">
 						<hr>
-						<div class="w3-container" style="text-align:left">
-							<h3>by Noah Rottler-Gurley</h3>
-							<h4>May 24, 2021</h4>
-							<p>
-								Ah, I saw those last year. I used <a href="#">this</a> product from the local store. It got rid of them right away! I hope the same works for you.
-							</p>
-						</div>
-						<hr>
-						<div class="w3-container" style="text-align:left">
-							<h3>by Bradley Aiken</h3>
-							<h4>May 24, 2021</h4>
-							<p>
-								I hate aphids!!! >:(
-							</p>
+						<div v-for="comment in currentPost.comments"  class="w3-container" style="text-align:left">
+							<h3>by {{ comment.user.name }}</h3>
+							<h4>{{ comment.date }}</h4>
+							<p>{{ comment.content }}</p>
 						</div>
 						<hr>
 					</div>
 					<div class="w3-light-blue custom-format-container">
 						<h2 class="custom-format-header" style="text-align:left"><b>Join the conversation</b></h2>
-						<input v-model="commentContent" class="w3-input w3-border w3-light-grey" type="text" style="height:100px" placeholder="Write your comment here">
+						<input v-model="content" class="w3-input w3-border w3-light-grey" type="text" style="height:100px" placeholder="Write your comment here">
 						<br>
-						<button class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Submit your comment</button>
+						<button @click="createComment" type="button" class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Submit your comment</button>
 					</form>
 				</div>
 			</b>

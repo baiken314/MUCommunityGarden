@@ -118,10 +118,36 @@ let dataApp = new Vue({
         gardens: {},
         posts: {},
         tasks: {},
-        currentPost: {}  // used for post.html
+        currentPost: {},  // used for post.html
+        
+        title: null,
+        tags: null,
+        content: null,
+        isAnnouncement: null
     },
     methods: {
-
+        createPost: async function () {
+            await createPost({
+                user: this.user._id,
+                tags: this.tags.split(/[ ]*,[ ]*/),
+                type: this.isAnnouncement && this.user.type == "admin" ? "announcement" : "post",
+                title: this.title,
+                content: this.content
+            }, this);
+            window.location = URL + "/forum";
+        },
+        createComment: async function () {
+            await createPost({
+                user: this.user._id,
+                tags: [],
+                type: "post",
+                title: "",
+                content: this.content,
+                parent: this.currentPost._id
+            }, this);
+            this.content = null;
+            updateDataApp(dataApp);
+        }
     }
 });
 
