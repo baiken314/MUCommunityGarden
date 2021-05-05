@@ -150,7 +150,7 @@ let dataApp = new Vue({
             if (this.title.length && this.content.length) {
                 await createPost({
                     user: this.user._id,
-                    tags: this.tags.split(/[ ]*,[ ]*/),
+                    tags: (this.tags) ? this.tags.split(/[ ]*,[ ]*/) : [],
                     type: this.isAnnouncement && this.user.type == "admin" ? "announcement" : "post",
                     title: this.title,
                     content: this.content

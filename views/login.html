@@ -8,7 +8,7 @@
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-    <div id="cloud-container" style="height:100%;">
+    <div style="height:100%;">
         <div class="w3-top">
             <div class="w3-bar w3-mobile" style="background-color:#69B3E7">
                 <img src="logo.png" class="w3-bar-item" style="height:65px;">
@@ -32,7 +32,7 @@
                         <input name="phoneNumber" v-if="mode != 'login'" type="tel" placeholder="Phone number" required>-->
                         <label>Password</label>
                         <input name="password" type="password" placeholder="Password" minlength="8" required>
-                        <button type="submit">Log in</button>
+                        <button class="pointer-button" type="submit">Log in</button>
                         <br>
                         <a @click="toggleMode" href="#">{{ mode == "login" ? "sign up?" : "log in?" }}</a>
                     </form>

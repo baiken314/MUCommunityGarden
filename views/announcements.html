@@ -8,7 +8,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-	<div id="cloud-container" style="height:100%;">
+	<div style="height:100%;">
 		<div class="w3-top">
 			<div class="w3-bar w3-mobile" style="background-color:#69B3E7">
 				<img src="logo.png" class="w3-bar-item" style="height:65px;">
@@ -31,7 +31,15 @@
 			<div class="w3-row w3-mobile">
 				<div class="w3-column w3-left w3-half">
 					<div class="custom-format-container">
-						<h3 class="custom-format-header">Messages From The Admins</h3>
+						<div v-if="user.type == 'admin'" class="custom-format-header w3-row">
+							<h3 class="w3-col w3-twothird w3-left">Messages From The Admins</h3>
+							<a href="/make-post" class="w3-right w3-col w3-third">
+								<h5 class="w3-round pointer-button w3-hover-dark-gray w3-padding" style="background-color:#69B3E7">Make Announcement</h5>
+							</a>
+						</div>
+						<div v-if="user.type != 'admin'" class="custom-format-header">
+							<h3>Messages From The Admins</h3>
+						</div>
 						<div class="custom-format-container">
 							<div v-for="post in posts.filter(post => post.type == 'announcement')" class="custom-format-container" class="custom-format-container">
 								<h4 class="custom-format-header" style="text-align:left;">{{post.title}}</h4>

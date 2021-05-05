@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-    <div id="cloud-container" style="height:100%;">
+    <div style="height:100%;">
         <div class="w3-top">
             <div class="w3-bar w3-mobile" style="background-color:#69B3E7">
                 <img src="logo.png" class="w3-bar-item" style="height:65px;">
@@ -28,10 +28,14 @@
         <br>
         <div style="width:60%; margin:auto; padding:20px;">
             <div id="data-app" class="custom-format">
-                <h1 class="custom-format-header">Message Board</h1>
-                <a href="/make-post">
-                    <button type="button" class="w3-light-blue w3-right w3-round w3-hover-dark-gray w3-padding">Make a Post</button>
-                </a>
+
+                <div class="custom-format-header w3-row">
+                    <h1 class="w3-col w3-twothird w3-left">Message Board</h1>
+                    <a href="/make-post" class="w3-right w3-col w3-third">
+                        <h3 class="w3-round pointer-button w3-hover-dark-gray w3-padding" style="background-color:#69B3E7">Make Post</h3>
+                    </a>
+                </div>
+
                 &nbsp;
                 <div class="custom-format-container">
                     <div v-for="post in posts.filter(post => post.parent == null || post.parent == undefined)" class="custom-format-container">
@@ -45,14 +49,14 @@
                             </div>
                             <div v-if="post.comments" class="viewbutton">
                                 <a v-bind:href="`/post/view/${ post._id }`">
-                                    <button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW {{ post.comments.length }} COMMENTS</button>
+                                    <button class ="w3-button pointer-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW {{ post.comments.length }} COMMENTS</button>
                                 </a>
                             </div>
                         </div>
-                        <div v-if="user == post.user">
-                            <button class="w3-red w3-right w3-round w3-hover-dark-gray">Delete this post</button>
+                        <!-- <div v-if="post.user._id == user._id">
+                            <button class="pointer-button w3-red w3-right w3-round w3-hover-dark-gray">Delete this post</button>
                             &nbsp;
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

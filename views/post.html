@@ -8,7 +8,7 @@
 	<script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-	<div id="cloud-container" style="height:100%;">
+	<div style="height:100%;">
 		<div class="w3-top">
 			<div class="w3-bar w3-mobile" style="background-color:#69B3E7">
 				<img src="/logo.png" class="w3-bar-item" style="height:65px;">
@@ -38,7 +38,7 @@
 							<h3>by {{ currentPost.user.name }}</h3>
 							<h4>{{ currentPost.date.toLocaleString() }}</h4>
 							<p>{{ currentPost.content }}</p>
-							<button v-if="user.name == currentPost.user.name || user.type == 'admin'" @click="deletePostFromPostPage(currentPost._id)" class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Delete Post</button>
+							<button v-if="user.name == currentPost.user.name || user.type == 'admin'" @click="deletePostFromPostPage(currentPost._id)" class="w3-black w3-left w3-round pointer-button w3-hover-dark-gray w3-padding">Delete Post</button>
 						</div>
 						<hr>
 					</div>
@@ -52,18 +52,31 @@
 							<h3>by {{ comment.user.name }}</h3>
 							<h4>{{ comment.date }}</h4>
 							<p>{{ comment.content }}</p>
-							<button v-if="user.name == comment.user.name || user.type == 'admin'" @click="deleteCommentFromPostPage(comment._id)" class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Delete Comment</button>
+							<button v-if="user.name == comment.user.name || user.type == 'admin'" @click="deleteCommentFromPostPage(comment._id)" class="w3-black w3-left w3-round pointer-button w3-hover-dark-gray w3-padding">Delete Comment</button>
 						</div>
 						<hr>
 					</div>
-					<div class="w3-light-blue custom-format-container">
+					<!-- <div class="custom-format-container" style="background-color:#69B3E7">
 						<h2 class="custom-format-header" style="text-align:left"><b>Join the conversation</b></h2>
 						<input v-model="content" class="w3-input w3-border w3-light-grey" type="text" style="height:100px" placeholder="Write your comment here">
 						<br>
 						<button @click="createComment" type="button" class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Submit your comment</button>
-					</form>
+					</div> -->
+
+					<div class="custom-format-container" style="background-color:#69B3E7">
+						<div class="custom-format-header w3-row">
+							<h2 class="w3-col w3-twothird w3-left"><b>Join the conversation</b></h2>
+							<div @click="createComment" class="w3-right w3-col w3-third">
+								<h4 class="w3-round pointer-button w3-hover-dark-gray w3-padding" style="background-color:#69B3E7">Submit Comment</h4>
+							</div>
+						</div>
+						<br>
+						<input v-model="content" class="w3-input w3-border w3-light-grey" type="text" style="height:100px" placeholder="Write your comment here">
+						<br>
+					</div>
+
 				</div>
-			</b>
+			</div>
 		</div>
 	</div>
 	<script src="/scripts/dataApp.js"></script>
