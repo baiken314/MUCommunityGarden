@@ -37,7 +37,6 @@
                         <h4 class="custom-format-header" style="text-align:left"><a v-bind:href="`/post/view/${ post._id }`">{{ post.title }}</a></h4>
                         <div class="custom-format-container">
                             <div class="post-info">
-<<<<<<< HEAD
                                 Created by: Kevin Pecci on 5/23/2021
                                 ❤️ {{post.likes}}
                             </div>
@@ -55,12 +54,10 @@
                         <div class="custom-format-container">
                             <div class="post-info">
                                 Created by: Noah Rottler-Gurley on 4/29/2021
-=======
                                 Created by: {{ user.name }} on {{ post.date.toLocaleString() }}
                             </div>
                             <div class="post">
                                 {{ post.content }}
->>>>>>> 1524d0c8988eb40c2fa89d2c81f1ee18e732e3ff
                             </div>
                             <div v-if="post.comments" class="viewbutton">
                                 <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW {{ post.comments.length }} COMMENTS</button></a>
