@@ -40,6 +40,10 @@ async function createPost(args, dataApp) {
     });
     const res = await req.json();
 
+    const postsReq = await fetch(URL + "/post");
+    const postsRes = await postsReq.json();
+    dataApp.posts = postsRes;
+
     console.log("END makePost " + res);
 }
 
@@ -60,6 +64,10 @@ async function updatePost(args, dataApp) {
         body: JSON.stringify(args)
     });
     const res = await req.json();
+
+    const postsReq = await fetch(URL + "/post");
+    const postsRes = await postsReq.json();
+    dataApp.posts = postsRes;
 
     console.log("END updatePost " + res);
 }
@@ -82,10 +90,37 @@ async function deletePost(args, dataApp) {
     });
     const res = await req.json();
 
+    const postsReq = await fetch(URL + "/post");
+    const postsRes = await postsReq.json();
+    dataApp.posts = postsRes;
+
     console.log("END deletePost " + res);
 }
 
-async function likePost(args, dataApp) {}
+async function likePost(args, dataApp) {
+    console.log("BEGIN likePost");
+
+    args.user = dataApp.user._id;
+    args.posts = dataApp.currentPost._id;
+
+    console.log(args);
+
+    const req = await fetch(URL + "/post/update", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(args)
+    });
+    const res = await req.json();
+
+    const postsReq = await fetch(URL + "/post");
+    const postsRes = await postsReq.json();
+    dataApp.posts = postsRes;
+
+    console.log("END likePost " + res);
+}
 
 async function createTask(args, dataApp) {}
 async function updateTask(args, dataApp) {}

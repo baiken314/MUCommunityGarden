@@ -8,6 +8,8 @@ router.route("/").get(async (req, res) => {
     res.json(await Post.find()
         .populate("user", "name")
         .populate("comments")
+        .sort({ date: -1 })
+        .filter({ parent: null })
     );
 });
 
