@@ -146,7 +146,7 @@ app.get("/user-session", async (req, res) => {
     res.json({
         events: await Event.find(),
         gardens: await Garden.find(),
-        posts: await Post.find(),
+        posts: await Post.find({ parent: undefined }).sort({ date: -1 }),
         tasks: await Task.find(),
         user: user,
         currentPost: req.session.currentPost || null
