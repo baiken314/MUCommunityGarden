@@ -104,27 +104,33 @@ async function likePost(args, dataApp) {
     console.log("END likePost ");
 }
 
-async function createTask(args, dataApp) {}
-async function updateTask(args, dataApp) {}
-async function deleteTask(args, dataApp) {}
-async function toggleCompleteTask(args, dataApp) {}
+// backend is written for these, but not implemented on frontend
+//async function createTask(args, dataApp) {}
+//async function updateTask(args, dataApp) {}
+//async function deleteTask(args, dataApp) {}
+//async function toggleCompleteTask(args, dataApp) {}
 
 async function logVolunteerHours(args, dataApp) {
 
 }
 
 // below functions for admins
-async function toggleApproveVolunteerHours(args, dataApp) {}
+async function toggleApproveVolunteerHours(args, dataApp) {
 
-async function createGarden(args, dataApp) {}
-async function deleteGarden(args, dataApp) {}
-async function assignGardenToUser(args, dataApp) {}
-async function removeGardenFromUser(args, dataApp) {}
+}
 
-async function createEvent(args, dataApp) {}
-async function updateEvent(args, dataApp) {}
-async function deleteEvent(args, dataApp) {}
+async function toggleAdminRights(args, dataApp){
+    
+}
 
+// backend is written for these, but not implemented on frontend
+//async function createGarden(args, dataApp) {}
+//async function deleteGarden(args, dataApp) {}
+//async function assignGardenToUser(args, dataApp) {}
+//async function removeGardenFromUser(args, dataApp) {}
+//async function createEvent(args, dataApp) {}
+//async function updateEvent(args, dataApp) {}
+//async function deleteEvent(args, dataApp) {}
 
 /*********
  * VUE APP
