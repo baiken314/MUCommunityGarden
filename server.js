@@ -143,13 +143,9 @@ app.get("/user-session", async (req, res) => {
 
     user.password = undefined;
 
-    res.json({
-        events: await Event.find().sort({ date: -1 }),
-        gardens: await Garden.find().sort({ number: 1 }),
-        posts: await Post.find({ parent: undefined }).sort({ date: -1 }),
-        tasks: await Task.find(),
-        user: user,
-        currentPost: (req.session.currnetPost) ? await Post.findOne({ _id: req.session.currentPost._id })
+    let currentPost = null;
+    if (req.session.currentPost != null && req.session.currentPost != undefined) {
+        currentPost = await Post.findOne({ _id: req.session.currentPost._id })
             .populate("user", "name")
             .populate({
                 path: "comments",
@@ -157,7 +153,16 @@ app.get("/user-session", async (req, res) => {
                     path: "user",
                     select: "name -_id"
                 }
-            }) || null : null
+            });
+    }
+
+    res.json({
+        events: await Event.find().sort({ date: -1 }),
+        gardens: await Garden.find().sort({ number: 1 }),
+        posts: await Post.find({ parent: undefined }).sort({ date: -1 }),
+        tasks: await Task.find(),
+        user: user,
+        currentPost: currentPost
     });
 });
 
