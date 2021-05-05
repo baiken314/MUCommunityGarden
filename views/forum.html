@@ -32,6 +32,7 @@
                 <a v-bind:href="`/makePost`">
                     <button type="button" class="w3-light-blue w3-right w3-round w3-hover-dark-gray w3-padding">Make a Post</button>
                 </a>
+                &nbsp;
                 <div class="custom-format-container">
                     <div v-for="post in posts.filter(post => post.parent == null || post.parent == undefined)" class="custom-format-container">
                         <h4 class="custom-format-header" style="text-align:left"><a v-bind:href="`/post/view/${ post._id }`">{{ post.title }}</a></h4>
