@@ -149,7 +149,7 @@ app.get("/user-session", async (req, res) => {
         posts: await Post.find(),
         tasks: await Task.find(),
         user: user,
-        currentPost: await Post.findOne({ _id: req.session.currentPost }) || null
+        currentPost: await Post.findOne({ _id: req.session.currentPost }).populate("user", "name").populate("comments") || null
     });
 });
 
@@ -162,14 +162,14 @@ app.get("/post/view/:id", async (req, res) => {
         return;
     }
 
-    let post = await Post.findOne({ _id: req.params._id });
+    let post = await Post.findOne({ _id: req.params.id }).populate("user", "name").populate("comments");
 
     if (post == null || post == undefined) {
         res.redirect("/forum");
         return;
     }
 
-    req.session.currentPost = post._id;
+    req.session.currentPost = post;
 
     res.sendFile(__dirname + "/views/post.html"); 
 });

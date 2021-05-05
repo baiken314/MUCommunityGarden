@@ -19,6 +19,8 @@ async function updateDataApp(dataApp) {
     dataApp.posts = userSession.posts;
     dataApp.tasks = userSession.tasks;
     dataApp.currentPost = userSession.currentPost;
+
+    console.log(JSON.stringify(userSession.currentPost));
 }
 
 async function createPost(args, dataApp) {
