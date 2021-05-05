@@ -13,7 +13,7 @@
 	<div id="cloud-container" style="height:100%;">
 		<div class="w3-top">
 			<div class="w3-bar w3-mobile" style="background-color:#69B3E7">
-				<img src="C:\Users\Summit\github repos\MUCommunityGarden\public\logo.png" class="w3-bar-item" style="height:65px;">
+				<img src="logo.png" class="w3-bar-item" style="height:65px;">
 				<div style="width:80%; margin:auto; padding:10px;">
 					<b>
 						<a href="/announcements" style="font-size:20px" class="w3-bar-item w3-button">Announcements</a>
@@ -30,8 +30,9 @@
 		<br>
 		<div class="custom-format" style="width:60%; height:100%; margin:auto; padding:20px;">
 			<div class="custom-format-container">
-				<!--<button class="w3-black w3-round w3-hover-dark-gray" style="margin:auto;"><<< Click here to go back to all message board posts. <<<</button>-->
+				<button type="button" class="w3-black w3-round w3-hover-dark-gray" style="margin:auto;"><<< Click here to go back to all message board posts. <<<</button>
 				<br>
+<<<<<<< HEAD
 				<div class="w3-container">
 					<h2 class="custom-format-header" style="text-align:left"><b>{{post.title}}</b></h2>
 					<div class="custom-format-container">
@@ -43,6 +44,16 @@
 								{{post.content}}
 							</p>
 							❤️ {{post.likes}}
+=======
+				<div id="data-app" class="w3-container">
+					<h2 class="custom-format-header" style="text-align:left"><b>Tomato Pests, Please Help Me!</b></h2>
+					<div class="custom-format-container">
+						<hr>
+						<div class="w3-container" style="text-align:left">
+							<h3>by {{ currentPost.user.name }}</h3>
+							<h4>{{ currentPost.date.toLocaleString() }}</h4>
+							<p>{{ currentPost.content }}</p>
+>>>>>>> 1524d0c8988eb40c2fa89d2c81f1ee18e732e3ff
 						</div>
 						<hr>
 						<button class="w3-light-blue w3-left w3-round w3-hover-white w3-padding">Like this post</button>
@@ -51,8 +62,8 @@
 				</div>
 				<br>
 				<div class="w3-container w3-padding">
-					<h2 class="custom-format-header" style="text-align:left"><b>Comments</b></h2>
-					<div class="custom-format-container">
+					<h2 v-if="currentPost.comments" class="custom-format-header" style="text-align:left"><b>Comments</b></h2>
+					<div v-if="currentPost.comments" v-for="comment in post.comments" class="custom-format-container">
 						<hr>
 						<div class="w3-container" style="text-align:left">
 							<h3>by Noah Rottler-Gurley</h3>
@@ -73,7 +84,7 @@
 					</div>
 					<div class="w3-light-blue custom-format-container">
 						<h2 class="custom-format-header" style="text-align:left"><b>Join the conversation</b></h2>
-						<input class="w3-input w3-border w3-light-grey" type="text" style="height:100px" placeholder="Write your comment here">
+						<input v-model="commentContent" class="w3-input w3-border w3-light-grey" type="text" style="height:100px" placeholder="Write your comment here">
 						<br>
 						<button class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Submit your comment</button>
 					</form>
@@ -81,5 +92,6 @@
 			</b>
 		</div>
 	</div>
+	<script src="/scripts/dataApp.js"></script>
 </body>
 </html>

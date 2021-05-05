@@ -31,17 +31,13 @@
         <div style="width:60%; margin:auto; padding:20px;">
             <div id="data-app" class="custom-format">
                 <h1 class="custom-format-header">Message Board</h1>
+                
                 <div class="custom-format-container">
-                    <li v-for="post in posts" :key="post.title">
-                        <h3 class="custom-format-header">{{post.title}}</h3>
-                        <div class="list">
-                            {{post.content}}
-                        </div>
-                    </li>
-                    <div class="custom-format-container">
-                        <h4 class="custom-format-header" style="text-align:left"><a href="#">Tomato Pests, Please Help Me!</a></h4>
+                    <div v-for="post in posts" class="custom-format-container">
+                        <h4 class="custom-format-header" style="text-align:left"><a v-bind:href="`/post/view/${ post._id }`">{{ post.title }}</a></h4>
                         <div class="custom-format-container">
                             <div class="post-info">
+<<<<<<< HEAD
                                 Created by: Kevin Pecci on 5/23/2021
                                 ❤️ {{post.likes}}
                             </div>
@@ -59,26 +55,15 @@
                         <div class="custom-format-container">
                             <div class="post-info">
                                 Created by: Noah Rottler-Gurley on 4/29/2021
+=======
+                                Created by: {{ user.name }} on {{ post.date.toLocaleString() }}
                             </div>
                             <div class="post">
-                                I was very excited for my squash in plot 1 to be ready to harvest, but when I got to the garden, I saw a groundhog scooting under the fence with my squash in tow. To protect ourselves from this thief we should look into reinforcing the fence or making it run deeper.
-                            </div>   
-                            <div class ="viewbutton">
-                                <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW 5 COMMENTS</button></a>
+                                {{ post.content }}
+>>>>>>> 1524d0c8988eb40c2fa89d2c81f1ee18e732e3ff
                             </div>
-                        </div>
-                    </div>
-                    <div class="custom-format-container">
-                        <h4 class="custom-format-header" style="text-align:left"><a href="#">Perfect gardening weather on Saturday!</a></h4>
-                        <div class="custom-format-container">
-                            <div class="post-info">
-                                Created by: Bradley Aiken on 4/15/2021
-                            </div>
-                            <div class="post">
-                                The forecast for this Saturday is sunny and 82°, perfect weather to get your late Spring plants in the ground. ☀️
-                            </div>   
-                            <div class ="viewbutton">
-                                <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW 3 COMMENTS</button></a>
+                            <div v-if="post.comments" class="viewbutton">
+                                <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW {{ post.comments.length }} COMMENTS</button></a>
                             </div>
                         </div>
                     </div>

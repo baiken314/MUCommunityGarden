@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const gardenSchema = new mongoose.Schema({
-    plot: Number,
+    plot: { type: Number, unique: true },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: "Task"
