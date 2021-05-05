@@ -36,19 +36,23 @@
                             <div class="list">
                                 <table class="w3-table-all">
                                     <tr>
-                                        <td>Title</td>
-                                        <td>Start Date</td>
-                                        <td>End Date</td>
+                                        <td>Activities</td>
+                                        <td>Date</td>
+                                        <td>Hours</td>
+                                        <td>Approved by</td>
                                     </tr>
-                                    <tr v-for="event in events" :key="event.start">
+                                    <tr v-for="event in events.filter(event => event.type == 'volunteering')">
                                         <td>
-                                            {{ event.title }}
+                                            {{ event.content }}
                                         </td>
                                         <td>
                                             {{ new Date(event.start).toLocaleString() }}
                                         </td>
                                         <td>
-                                            {{ new Date(event.end).toLocaleString() }}
+                                            {{ event.hours }}
+                                        </td>
+                                        <td>
+                                            {{ event.approvedBy ? event.approvedBy.name : "pending..." }}
                                         </td>
                                     </tr>
                                 </table>

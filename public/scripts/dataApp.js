@@ -218,13 +218,14 @@ let dataApp = new Vue({
         },
 
         logVolunteerHours: async function () {
-            console.log("LOG VOLUNTEER HOURS VUE FUNCTION");
-            await logVolunteerHours({
-                content: this.content,
-                start: this.date,
-                hours: this.hours
-            }, this);
-            window.location = URL + "/userpage";
+            if (this.content.length) {
+                await logVolunteerHours({
+                    content: this.content,
+                    start: this.date,
+                    hours: this.hours
+                }, this);
+                window.location = URL + "/userpage";
+            }
         },
     }
 });

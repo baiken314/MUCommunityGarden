@@ -157,7 +157,9 @@ app.get("/user-session", async (req, res) => {
     }
 
     res.json({
-        events: await Event.find().sort({ date: -1 }).populate("user", "name -_id").populate("approvedBy", "name -_id"),
+        events: req.session.user.type == "admin" ? 
+            await Event.find().sort({ start: 1 }).populate("user", "name -_id").populate("approvedBy", "name -_id") :
+            await Event.find({ user: req.session.user._id }).sort({ start: 1 }).populate("user", "name -_id").populate("approvedBy", "name -_id"),
         gardens: await Garden.find().sort({ number: 1 }),
         posts: await Post.find({ parent: undefined }).sort({ date: -1 }).populate("user", "name -_id").populate("comments"),
         tasks: await Task.find(),
@@ -209,6 +211,11 @@ app.post("/login", async (req, res) => {
 
     // create new user for signup
     if (req.body.email) {
+        if (await User.find({ name: req.body.name })) {
+            res.send("Username " + req.body.name + " already exists.");
+            return;
+        }
+
         user = await User.create({
             name: req.body.name,
             email: req.body.email,

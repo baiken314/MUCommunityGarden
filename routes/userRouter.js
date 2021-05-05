@@ -44,6 +44,10 @@ router.route("/toggle-admin-rights").post(async (req, res) => {
     res.json(user);
 });
 
+/**
+ * req.body.user: User._id  // user performing action
+ * req.body.selectedUser: User._id  // user to change admin rights of
+ */
 router.route("/admin-delete").post(async (req, res) => {
     console.log("POST user/toggle-admin-rights");
 
