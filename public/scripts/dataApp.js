@@ -111,7 +111,24 @@ async function likePost(args, dataApp) {
 //async function toggleCompleteTask(args, dataApp) {}
 
 async function logVolunteerHours(args, dataApp) {
+    console.log("BEGIN logVolunteerHours");
 
+    args.user = dataApp.user._id;
+    args.type = "volunteering";
+
+    console.log(args);
+
+    const req = await fetch(URL + "/event/create", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(args)
+    });
+    const res = await req.json();
+
+    console.log("END logVolunteerHours " + res);
 }
 
 // below functions for admins
@@ -149,7 +166,10 @@ let dataApp = new Vue({
         tags: null,
         content: null,
         isAnnouncement: null,
-        searchString: ""
+        searchString: "",
+
+        date: null,
+        hours: 0
     },
     methods: {
         createPost: async function () {
@@ -195,7 +215,17 @@ let dataApp = new Vue({
         deleteCommentFromPostPage: async function (CommentID) {
             await deletePost({ post: CommentID }, this);
             updateDataApp(this);
-        }
+        },
+
+        logVolunteerHours: async function () {
+            console.log("LOG VOLUNTEER HOURS VUE FUNCTION");
+            await logVolunteerHours({
+                content: this.content,
+                start: this.date,
+                hours: this.hours
+            }, this);
+            window.location = URL + "/userpage";
+        },
     }
 });
 

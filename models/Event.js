@@ -7,6 +7,7 @@ const eventSchema = new mongoose.Schema({
     date: Date,
     start: Date,
     end: Date,
+    hours: Number,  // for volunteering
     user: {
         type: mongoose.Schema.ObjectId,
         ref: "User"

@@ -14,6 +14,7 @@ router.route("/").get(async (req, res) => {
  * req.body.title: String  // if not "volunteering"
  * req.body.start: Date
  * req.body.end: Date
+ * req.body.hours: Number  // for volunteering
  */
 router.route("/create").post(async (req, res) => {
     console.log("POST event/create");
@@ -29,14 +30,19 @@ router.route("/create").post(async (req, res) => {
         title: req.body.type == "volunteering" ? `VOLUNTEER LOG - ${user.name} - ${req.body.start.toLocaleString()}` : req.body.title,
         type: req.body.type,
         date: new Date(),
-        start: req.body.start,
-        end: req.body.end,
+        start: req.body.start || null,
+        end: req.body.end || null,
         user: user._id,
-        approvedBy: user.type == "admin" ? user._id : null
+        approvedBy: user.type == "admin" ? user._id : null,
+        hours: req.body.hours || 0,
+        content: req.body.content || null
     }).save();
+
+    res.json({ message: "volunteer hours logged" });
 });
 
 /**
+ * DOES NOT WORK WITH HOURS PARAMETER
  * req.body.user: user._id
  * req.body.event: event._id
  * req.body.title: String

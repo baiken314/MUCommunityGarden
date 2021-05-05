@@ -28,7 +28,7 @@
         <br>
         <div style="width:30%; height:100%; margin:auto; padding:20px;">
             <div class="login">
-                <div id="login-app">
+                <div id="data-app">
                     <h2 class="login-header">Volunteer Log</h2>
                     <form class="login-container" method="POST" action="/login">
                         <!-- <label>Username</label>
@@ -40,48 +40,11 @@
                                 <tr>
                                     <td>
                                         <label>Date</label>
-                                        <input name="date" type="date" required>
+                                        <input v-model="date" type="date" required>
                                     </td>
                                     <td>
                                         <label>Hours</label>
-                                        <input name="hours" type="number" placeholder="Please enter the number of hours this work took.">
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="custom-format-container">
-                            <label>Volunteer Task(s)</label>
-                            <table style="width:100%;">
-                                <tr style="height:50px">
-                                    <td style="width:20%;">
-                                        <input type="checkbox">
-                                    </td>
-                                    <td style="width:80%;">
-                                        <label class="w3-left">Pull Weeds</label>
-                                    </td>
-                                </tr>
-                                <tr style="height:50px">
-                                    <td style="width:20%;">
-                                        <input type="checkbox">
-                                    </td>
-                                    <td style="width:80%;">
-                                        <label class="w3-left">Harvest Peppers</label>
-                                    </td>
-                                </tr>
-                                <tr style="height:50px">
-                                    <td style="width:20%;">
-                                        <input type="checkbox">
-                                    </td>
-                                    <td style="width:80%;">
-                                        <label class="w3-left">Water Plot 3</label>
-                                    </td>
-                                </tr>
-                                <tr style="height:50px">
-                                    <td style="width:20%;">
-                                        <input type="checkbox">
-                                    </td>
-                                    <td style="width:80%;">
-                                        <input type="text" placeholder="Custom">
+                                        <input v-model="hours" type="number" step="0.1" min="0" max="24" placeholder="Hours volunteered">
                                     </td>
                                 </tr>
                             </table>
@@ -89,16 +52,16 @@
                         <br>
                         <div class="custom-format-container">
                             <label>Comments</label>
-                            <input name="comments" type="text" placeholder="Please leave any comments here." style="height:100px">
+                            <textarea v-model="content" placeholder="Describe your volunteer activities." style="height:100px"></textarea>
                             <!-- <button type="submit">Log in</button> -->
-                            &nbsp;
-                            <input type="submit" value="Submit Volunteer Log">
+                            <br><br>
+                            <button @click="logVolunteerHours" type="button">Submit Volunteer Log</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <script src="scripts/dataApp.js"></script>
+    <script src="/scripts/dataApp.js"></script>
 </body>
 </html>
