@@ -38,6 +38,9 @@
 							<h3>by {{ currentPost.user.name }}</h3>
 							<h4>{{ currentPost.date.toLocaleString() }}</h4>
 							<p>{{ currentPost.content }}</p>
+							<div class="w3-row">
+								<h4 @click="likePostFromPostPage()" class="w3-light-blue w3-round w3-hover-white pointer-button w3-padding w3-left w3-col" style="width:15%;">❤️{{ currentPost.likedBy.length }} - Like</h4>
+							</div>
 							<button v-if="user.name == currentPost.user.name || user.type == 'admin'" @click="deletePostFromPostPage(currentPost._id)" class="w3-black w3-left w3-round pointer-button w3-hover-dark-gray w3-padding">Delete Post</button>
 						</div>
 						<hr>
@@ -56,13 +59,6 @@
 						</div>
 						<hr>
 					</div>
-					<!-- <div class="custom-format-container" style="background-color:#69B3E7">
-						<h2 class="custom-format-header" style="text-align:left"><b>Join the conversation</b></h2>
-						<input v-model="content" class="w3-input w3-border w3-light-grey" type="text" style="height:100px" placeholder="Write your comment here">
-						<br>
-						<button @click="createComment" type="button" class="w3-black w3-left w3-round w3-hover-dark-gray w3-padding">Submit your comment</button>
-					</div> -->
-
 					<div class="custom-format-container" style="background-color:#69B3E7">
 						<div class="custom-format-header w3-row">
 							<h2 class="w3-col w3-twothird w3-left"><b>Join the conversation</b></h2>

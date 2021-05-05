@@ -123,6 +123,8 @@ router.route("/like").post(async (req, res) => {
 
     console.log(`User ${req.body.user} liked post ${post._id}`);
     await post.save();
+
+    res.json(post);
 });
 
 module.exports = router;

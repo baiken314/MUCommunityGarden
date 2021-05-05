@@ -88,11 +88,11 @@ async function likePost(args, dataApp) {
     console.log("BEGIN likePost");
 
     args.user = dataApp.user._id;
-    args.posts = dataApp.currentPost._id;
+    args.post = dataApp.currentPost._id;
 
     console.log(args);
 
-    const req = await fetch(URL + "/post/update", {
+    await fetch(URL + "/post/like", {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -100,9 +100,8 @@ async function likePost(args, dataApp) {
         },
         body: JSON.stringify(args)
     });
-    const res = await req.json();
 
-    console.log("END likePost " + res);
+    console.log("END likePost ");
 }
 
 async function createTask(args, dataApp) {}
