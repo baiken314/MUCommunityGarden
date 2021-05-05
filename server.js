@@ -149,7 +149,15 @@ app.get("/user-session", async (req, res) => {
         posts: await Post.find({ parent: undefined }).sort({ date: -1 }),
         tasks: await Task.find(),
         user: user,
-        currentPost: req.session.currentPost || null
+        currentPost: await Post.findOne({ _id: req.session.currentPost._id })
+            .populate("user", "name")
+            .populate({
+                path: "comments",
+                populate: {
+                    path: "user",
+                    select: "name -_id"
+                }
+            }) || null
     });
 });
 

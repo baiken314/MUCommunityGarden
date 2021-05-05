@@ -32,7 +32,7 @@ router.route("/create").post(async (req, res) => {
         start: req.body.start,
         end: req.body.end,
         user: user._id,
-        approvedBy: user.type == "admin" ? user._id : undefined
+        approvedBy: user.type == "admin" ? user._id : null
     }).save();
 });
 
