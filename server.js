@@ -144,12 +144,12 @@ app.get("/user-session", async (req, res) => {
     user.password = undefined;
 
     res.json({
-        events: await Event.find(),
-        gardens: await Garden.find(),
-        posts: await Post.find(),
+        events: await Event.find().sort({ date: -1 }),
+        gardens: await Garden.find().sort({ number: 1 }),
+        posts: await Post.find({ parent: undefined }).sort({ date: -1 }),
         tasks: await Task.find(),
         user: user,
-        currentPost: await Post.findOne({ _id: req.session.currentPost }).populate("user", "name").populate("comments") || null
+        currentPost: req.session.currentPost || null
     });
 });
 
@@ -162,7 +162,15 @@ app.get("/post/view/:id", async (req, res) => {
         return;
     }
 
-    let post = await Post.findOne({ _id: req.params.id }).populate("user", "name").populate("comments");
+    let post = await Post.findOne({ _id: req.params.id })
+                        .populate("user", "name")
+                        .populate({
+                            path: "comments",
+                            populate: {
+                                path: "user",
+                                select: "name -_id"
+                            }
+                        });
 
     if (post == null || post == undefined) {
         res.redirect("/forum");

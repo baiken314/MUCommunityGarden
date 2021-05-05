@@ -23,7 +23,10 @@ const postSchema = new mongoose.Schema({
     }],
 
     date: Date,
-    parent: this
+    parent: {
+        type: mongoose.Schema.ObjectId,
+        ref: "Post"
+    }
 });
 
 postSchema.virtual("comments", {

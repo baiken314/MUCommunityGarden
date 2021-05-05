@@ -31,36 +31,20 @@
         <div style="width:60%; margin:auto; padding:20px;">
             <div id="data-app" class="custom-format">
                 <h1 class="custom-format-header">Message Board</h1>
-                
                 <div class="custom-format-container">
-                    <div v-for="post in posts" class="custom-format-container">
+                    <div v-for="post in posts.filter(post => post.parent == null || post.parent == undefined)" class="custom-format-container">
                         <h4 class="custom-format-header" style="text-align:left"><a v-bind:href="`/post/view/${ post._id }`">{{ post.title }}</a></h4>
                         <div class="custom-format-container">
                             <div class="post-info">
-                                Created by: Kevin Pecci on 5/23/2021
-                                ❤️ {{post.likes}}
-                            </div>
-                            <div class="post">
-                                Recently I've noticed my tomato plants in plot 5 have been getting eaten alive by aphids! Does anyone know a good way to keep these bothersome bugs off my precious plants?
-                            </div>
-                            <div class ="viewbutton">
-                                <button class="w3-light-blue w3-left w3-round w3-hover-white w3-padding">Like this post</button>
-                                <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW 10 COMMENTS</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-format-container">
-                        <h4 class="custom-format-header" style="text-align:left"><a href="#">Groundhog Grabbing Gourds</a></h4>
-                        <div class="custom-format-container">
-                            <div class="post-info">
-                                Created by: Noah Rottler-Gurley on 4/29/2021
                                 Created by: {{ user.name }} on {{ post.date.toLocaleString() }}
                             </div>
                             <div class="post">
                                 {{ post.content }}
                             </div>
                             <div v-if="post.comments" class="viewbutton">
-                                <a href="#"><button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW {{ post.comments.length }} COMMENTS</button></a>
+                                <a v-bind:href="`/post/view/${ post._id }`">
+                                    <button class ="w3-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW {{ post.comments.length }} COMMENTS</button>
+                                </a>
                             </div>
                         </div>
                     </div>
