@@ -148,7 +148,8 @@ let dataApp = new Vue({
         title: null,
         tags: null,
         content: null,
-        isAnnouncement: null
+        isAnnouncement: null,
+        searchString: ""
     },
     methods: {
         createPost: async function () {

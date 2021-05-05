@@ -31,6 +31,7 @@
 
                 <div class="custom-format-header w3-row">
                     <h1 class="w3-col w3-twothird w3-left">Message Board</h1>
+                    <input v-model="searchString" type="text" placeholder="Search for posts" class="w3-padding w3-left">
                     <a href="/make-post" class="w3-right w3-col w3-third">
                         <h3 class="w3-round pointer-button w3-hover-dark-gray w3-padding" style="background-color:#69B3E7">Make Post</h3>
                     </a>
@@ -38,11 +39,15 @@
 
                 &nbsp;
                 <div class="custom-format-container">
-                    <div v-for="post in posts.filter(post => post.parent == null || post.parent == undefined)" class="custom-format-container">
+                    <div v-for="post in posts.filter(post => post.parent == null || post.parent == undefined)
+                        .filter(post => post.title.toLowerCase().includes(searchString.toLowerCase()) || 
+                            post.content.toLowerCase().includes(searchString.toLowerCase()) || 
+                            post.user.name.toLowerCase().includes(searchString.toLowerCase()))" 
+                        class="custom-format-container">
                         <h4 class="custom-format-header" style="text-align:left"><a v-bind:href="`/post/view/${ post._id }`">{{ post.title }}</a></h4>
                         <div class="custom-format-container">
                             <div class="post-info">
-                                Created by: {{ user.name }} on {{ post.date.toLocaleString() }}
+                                Created by: {{ post.user.name }} on {{ post.date.toLocaleString() }}
                             </div>
                             <div class="post">
                                 {{ post.content }}
