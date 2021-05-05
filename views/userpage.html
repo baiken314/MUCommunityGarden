@@ -36,20 +36,20 @@
                             <div class="list">
                                 <table class="w3-table-all">
                                     <tr>
-                                        <td v-for="event in events" :key="event.start">
-                                            {{ event.title }}
-                                        </td>
-                                        <td v-for="event in events" :key="event.start">
-                                            {{ event.start }}
-                                        </td>
-                                        <td v-for="event in events" :key="event.end">
-                                            {{ event.end }}
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td>Title</td>
                                         <td>Start Date</td>
                                         <td>End Date</td>
+                                    </tr>
+                                    <tr v-for="event in events" :key="event.start">
+                                        <td>
+                                            {{ event.title }}
+                                        </td>
+                                        <td>
+                                            {{ new Date(event.start).toLocaleString() }}
+                                        </td>
+                                        <td>
+                                            {{ new Date(event.end).toLocaleString() }}
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
