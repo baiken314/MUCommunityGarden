@@ -179,6 +179,7 @@ body {
 {
   margin: 16px auto;
   text-align: center;
+  min-width: 500px;
 }
 
 .custom-format-header,
