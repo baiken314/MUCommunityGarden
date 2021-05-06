@@ -228,7 +228,7 @@ app.post("/login", async (req, res) => {
 
     // create new user for signup
     if (req.body.email) {
-        if (await User.find({ name: req.body.name })) {
+        if (await User.find({ name: req.body.name }).length > 0) {
             res.send("Username " + req.body.name + " already exists.");
             return;
         }
