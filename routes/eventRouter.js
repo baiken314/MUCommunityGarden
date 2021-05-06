@@ -27,7 +27,7 @@ router.route("/create").post(async (req, res) => {
 
     let user = await User.findOne({ _id: req.body.user });
     await new Event({
-        title: req.body.type == "volunteering" ? `VOLUNTEER LOG - ${user.name} - ${req.body.start.toLocaleString()}` : req.body.title,
+        title: req.body.type == "volunteering" ? `VOLUNTEER LOG - ${user.name}` : req.body.title,
         type: req.body.type,
         date: new Date(),
         start: new Date(req.body.start) || null,
