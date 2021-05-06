@@ -6,6 +6,7 @@ const URL = "http://" + window.location.host;
 /************
  * API CALLS
  ************/
+
 // grab all information for a user
 async function updateDataApp(dataApp) {
     console.log("updateGameApp in dataApp.js");
@@ -189,6 +190,8 @@ let dataApp = new Vue({
         content: null,
         isAnnouncement: null,
         searchString: "",
+
+        selectedUserName: null,
 
         date: null,
         hours: 0
