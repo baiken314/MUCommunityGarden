@@ -101,7 +101,7 @@ router.route("/delete").post(async (req, res) => {
     for (eventId of req.body.events) {
         let event = await Event.findOne({ _id: eventId });
         if (!event.user.equals(user._id)) {
-            canDelete = user.type == "admin";
+            canDelete = req.session.user.type == "admin";
             break;
         }
     }

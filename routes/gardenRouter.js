@@ -19,7 +19,7 @@ router.route("/").get(async (req, res) => {
 router.route("/create").post(async (req, res) => {
     console.log("POST garden/create");
 
-    if (user.type != "admin") {
+    if (req.session.user.type != "admin") {
         res.json({ message: "ERROR - this is an admin function" });
         return;
     }
@@ -39,7 +39,7 @@ router.route("/create").post(async (req, res) => {
  router.route("/delete").post(async (req, res) => {
     console.log("POST garden/delete");
 
-    if (user.type != "admin") {
+    if (req.session.user.type != "admin") {
         res.json({ message: "ERROR - this is an admin function" });
         return;
     }
@@ -59,7 +59,7 @@ router.route("/create").post(async (req, res) => {
  router.route("/assign").post(async (req, res) => {
     console.log("POST garden/assign");
 
-    if (user.type != "admin") {
+    if (req.session.user.type != "admin") {
         res.json({ message: "ERROR - this is an admin function" });
         return;
     }
@@ -78,7 +78,7 @@ router.route("/create").post(async (req, res) => {
  router.route("/unassign").post(async (req, res) => {
     console.log("POST garden/delete");
 
-    if (user.type != "admin") {
+    if (req.session.user.type != "admin") {
         res.json({ message: "ERROR - this is an admin function" });
         return;
     }

@@ -52,7 +52,7 @@ router.route("/update").post(async (req, res) => {
     let post = await Post.findOne({ _id: req.body.post });
 
     // check if user owns post
-    if (!post.user.equals(user._id) && user.type != "admin") {
+    if (!post.user.equals(user._id) && req.session.user.type != "admin") {
         res.json({ message: "ERROR - user cannot perform this function" });
         return;
     }
@@ -82,7 +82,7 @@ router.route("/delete").post(async (req, res) => {
     for (postId of req.body.posts) {
         let post = await Post.findOne({ _id: postId });
         if (!post.user.equals(user._id)) {
-            canDelete = user.type == "admin";
+            canDelete = req.session.user.type == "admin";
             break;
         }
     }

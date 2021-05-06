@@ -52,6 +52,8 @@
 									<div class="post-announcement">
 										{{post.content}}
 									</div>
+									<button v-if="user.type == 'admin'" @click="deletePostFromPostPage(post._id)" class="w3-black w3-left w3-round pointer-button w3-hover-dark-gray w3-padding">Delete Announcement</button>
+									<br>
 								</div>
 							</div>
 						</div>
