@@ -238,7 +238,7 @@ let dataApp = new Vue({
         },
 
         logVolunteerHours: async function () {
-            if (this.content.length) {
+            if (this.content.length && this.hours > 0 && this.hours < 24) {
                 await logVolunteerHours({
                     content: this.content,
                     start: this.date,
