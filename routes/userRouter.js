@@ -26,12 +26,14 @@ router.route("/").get(async (req, res) => {
 router.route("/toggle-admin-rights").post(async (req, res) => {
     console.log("POST user/toggle-admin-rights");
 
+    console.log("DELETE REQ.BODY " + JSON.stringify(req.body));
+
     if (req.session.user.type != "admin") {
         res.json({ message: "ERROR - this is an admin function" });
         return;
     }
 
-    let user = User.find({ _id: selectedUser });
+    let user = await User.findOne({ _id: req.body.selectedUser });
 
     if (user == null || user == undefined) {
         res.json({ message: "ERROR - this user does not exist" });
@@ -39,7 +41,7 @@ router.route("/toggle-admin-rights").post(async (req, res) => {
     }
 
     user.type = user.type == "admin" ? "user" : "admin";
-    user.save();
+    await user.save();
 
     res.json(user);
 });
@@ -51,12 +53,14 @@ router.route("/toggle-admin-rights").post(async (req, res) => {
 router.route("/admin-delete").post(async (req, res) => {
     console.log("POST user/toggle-admin-rights");
 
+    console.log("DELETE REQ.BODY " + req.body);
+
     if (req.session.user.type != "admin") {
         res.json({ message: "ERROR - this is an admin function" });
         return;
     }
 
-    let user = User.find({ _id: selectedUser });
+    let user = await User.findOne({ _id: req.body.selectedUser });
 
     if (user == null || user == undefined) {
         res.json({ message: "ERROR - this user does not exist" });
@@ -66,7 +70,7 @@ router.route("/admin-delete").post(async (req, res) => {
     Event.deleteMany({ user: user._id });
     Post.deleteMany({ user: user._id });
 
-    user.delete();
+    await user.delete();
 
     res.json({ message: "user deleted successfully" });
 });

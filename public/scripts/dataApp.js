@@ -1,4 +1,4 @@
-const socket = io();
+socket = io();
 
 const URL = "http://" + window.location.host;
 
@@ -138,7 +138,7 @@ async function toggleApproveVolunteerHours(args, dataApp) {
     console.log("BEGIN toggleApproveVolunteerHours");
 
     args.user = dataApp.user._id;
-    args.type = "volunteering";
+    args.events = [args.event];
 
     console.log(args);
 
@@ -156,12 +156,43 @@ async function toggleApproveVolunteerHours(args, dataApp) {
 }
 
 async function toggleAdminRights(args, dataApp){
-    
+    console.log("BEGIN toggleAdminRights");
+
+    args.user = dataApp.user._id;
+
+    console.log(args);
+
+    const req = await fetch(URL + "/user/toggle-admin-rights", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(args)
+    });
+    const res = await req.json();
+
+    console.log("END toggleAdminRights " + res);
 }
 
-async function deleteUser(args, dataApp)
-{
+async function deleteUser(args, dataApp) {
+    console.log("BEGIN deleteUser");
 
+    args.user = dataApp.user._id;
+
+    console.log(args);
+
+    const req = await fetch(URL + "/user/admin-delete", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(args)
+    });
+    const res = await req.json();
+
+    console.log("END deleteUser " + res);
 }
 
 // backend is written for these, but not implemented on frontend
@@ -283,6 +314,27 @@ let dataApp = new Vue({
             }, this);
             updateDataApp(this);
         },
+
+        toggleAdminRights: async function (userId) {
+            await toggleAdminRights({
+                selectedUser: userId
+            }, this);
+            updateDataApp(this);
+        },
+
+        deleteUser: async function (userId) {
+            await deleteUser({
+                selectedUser: userId
+            }, this);
+            updateDataApp(this);
+        },
+
+        toggleApproveVolunteerHours: async function (eventId) {
+            await toggleApproveVolunteerHours({
+                event: eventId
+            }, this);
+            updateDataApp(this);
+        }
     }
 });
 

@@ -94,7 +94,7 @@
                                             <td v-if="event.approvedBy == null || event.approvedBy == undefined">
                                                 <div v-if="selectedVolunteerLogID != event._id" @click="selectedVolunteerLogID = event._id" class="w3-round pointer-button w3-gray w3-hover-dark-gray w3-padding">Pending</div>
                                                 <div v-if="selectedVolunteerLogID == event._id">
-                                                    <div class="w3-round pointer-button w3-green w3-hover-dark-gray w3-padding" @click="toggleApproveVolunteerHours()">Approve</div>
+                                                    <div class="w3-round pointer-button w3-green w3-hover-dark-gray w3-padding" @click="toggleApproveVolunteerHours(event._id)">Approve</div>
                                                     <div class="w3-round pointer-button w3-red w3-hover-dark-gray w3-padding" @click="deleteEvent(event._id)">Decline</div>
                                                 </div>
                                             </td>
@@ -139,7 +139,7 @@
                                             <td v-if="event.approvedBy == null || event.approvedBy == undefined">
                                                 <div v-if="selectedVolunteerLogID != event._id" @click="selectedVolunteerLogID = event._id" class="w3-round pointer-button w3-gray w3-hover-dark-gray w3-padding">Pending</div>
                                                 <div v-if="selectedVolunteerLogID == event._id">
-                                                    <div class="w3-round pointer-button w3-green w3-hover-dark-gray w3-padding" @click="toggleApproveVolunteerHours()">Approve</div>
+                                                    <div class="w3-round pointer-button w3-green w3-hover-dark-gray w3-padding" @click="toggleApproveVolunteerHours(event._id)">Approve</div>
                                                     <div class="w3-round pointer-button w3-red w3-hover-dark-gray w3-padding" @click="deleteEvent(event._id)">Decline</div>
                                                 </div>
                                             </td>

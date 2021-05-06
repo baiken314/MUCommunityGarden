@@ -68,24 +68,24 @@ router.route("/update").post(async (req, res) => {
 });
 
 /**
- * req.body.user: user._id
  * req.body.events: [event._id]
  * req.body.approve: Boolean
  */
 router.route("/admin-approve").post(async (req, res) => {
     console.log("POST event/admin-approve");
 
-    let user = await User.findOne({ _id: req.body.user });
-
-    if (user.type != "admin") {
+    if (req.session.user.type != "admin") {
         res.json({ message: "ERROR - user must be admin to perform this function" });
         return;
     }
 
     for (eventId of req.body.events) {
         let event = await Event.findOne({ _id: eventId });
-        event.approvedBy = user._id;
+        event.approvedBy = req.session.user._id;
+        await event.save();
     }
+
+    res.json({ message: "event succesfully approved" });
 });
 
 /**
