@@ -180,7 +180,7 @@ app.get("/user-session", async (req, res) => {
         posts: await Post.find({ parent: undefined }).sort({ date: -1 }).populate("user", "name -_id").populate("comments"),
         tasks: await Task.find(),
         user: user,
-        users: req.session.user.type == "admin" ? await User.find().populate("posts").populate("events") : null,
+        users: req.session.user.type == "admin" ? await User.find().sort({ name: 1 }).populate("posts").populate("events") : null,
         currentPost: currentPost
     });
 });
