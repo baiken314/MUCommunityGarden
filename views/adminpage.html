@@ -72,6 +72,7 @@
                                         </div>
                                     </div>
                                 </h4>
+                                <br>
                                 <div class="list">
                                     <table class="w3-table-all">
                                         <tr>
@@ -94,15 +95,20 @@
                                             <td v-if="event.approvedBy == null || event.approvedBy == undefined">
                                                 <div v-if="selectedVolunteerLogID != event._id" @click="selectedVolunteerLogID = event._id" class="w3-round pointer-button w3-gray w3-hover-dark-gray w3-padding">Pending</div>
                                                 <div v-if="selectedVolunteerLogID == event._id">
+<<<<<<< HEAD
                                                     <div class="w3-round pointer-button w3-green w3-hover-dark-gray w3-padding" @click="toggleApproveVolunteerHours(event._id)">Approve</div>
                                                     <div class="w3-round pointer-button w3-red w3-hover-dark-gray w3-padding" @click="deleteEvent(event._id)">Decline</div>
+=======
+                                                    <div class="w3-round pointer-button w3-green w3-hover-light-green w3-padding" @click="toggleApproveVolunteerHours(event._id)">Approve</div>
+                                                    <div class="w3-round pointer-button w3-red w3-hover-orange w3-padding" @click="deleteEvent(event._id)">Decline</div>
+>>>>>>> 145247ba88ba8571701d152b9c24a32f2a3eb141
                                                 </div>
                                             </td>
                                             <td v-if="event.approvedBy != null && event.approvedBy != undefined">
                                                 {{ event.approvedBy.name }}
                                             </td>
                                             <td v-if="deleteMode" >
-                                                <div class="w3-round pointer-button w3-red w3-hover-dark-gray w3-padding" @click="deleteEvent(event._id)">Delete</div>
+                                                <div class="w3-round pointer-button w3-red w3-hover-orange w3-padding" @click="deleteEvent(event._id)">Delete</div>
                                             </td>
                                         </tr>
                                     </table>
@@ -111,13 +117,17 @@
                             <div v-if="selectedUserName != null" class="custom-format-container">
                                 <h4 v-if="events.filter(event => event.type == 'volunteering' && event.user.name == selectedUserName).length">
                                     <div class="w3-col w3-half w3-left">
-                                        Total volunteer hours: {{ Math.round(events.filter(event => event.type == 'volunteering' && event.user.name == selectedUserName).reduce((total, event) => { return total += event.hours }, 0) * 10) / 10 }}
+                                        {{selectedUserName}}'s volunteer hours: {{ Math.round(events.filter(event => event.type == 'volunteering' && event.user.name == selectedUserName).reduce((total, event) => { return total += event.hours }, 0) * 10) / 10 }}
                                     </div>
                                     <div class="w3-col w3-half w3-right">
                                         <div class="w3-round pointer-button w3-gray w3-hover-dark-gray w3-padding" @click="deleteMode = !deleteMode;">Toggle Delete Mode</div>
                                     </div>
                                 </h4>
-                                <div class="list">
+                                <br><br><br>
+                                <div class="list" v-if="events.filter(event => event.type == 'volunteering' && event.user.name == selectedUserName).length == 0">
+                                    {{selectedUserName}} has no volunteer logs.
+                                </div>
+                                <div class="list" v-if="events.filter(event => event.type == 'volunteering' && event.user.name == selectedUserName).length">
                                     <table class="w3-table-all">
                                         <tr>
                                             <td>Activities</td>
@@ -139,15 +149,20 @@
                                             <td v-if="event.approvedBy == null || event.approvedBy == undefined">
                                                 <div v-if="selectedVolunteerLogID != event._id" @click="selectedVolunteerLogID = event._id" class="w3-round pointer-button w3-gray w3-hover-dark-gray w3-padding">Pending</div>
                                                 <div v-if="selectedVolunteerLogID == event._id">
+<<<<<<< HEAD
                                                     <div class="w3-round pointer-button w3-green w3-hover-dark-gray w3-padding" @click="toggleApproveVolunteerHours(event._id)">Approve</div>
                                                     <div class="w3-round pointer-button w3-red w3-hover-dark-gray w3-padding" @click="deleteEvent(event._id)">Decline</div>
+=======
+                                                    <div class="w3-round pointer-button w3-green w3-hover-light-green w3-padding" @click="toggleApproveVolunteerHours(event._id)">Approve</div>
+                                                    <div class="w3-round pointer-button w3-red w3-hover-orange w3-padding" @click="deleteEvent(event._id)">Decline</div>
+>>>>>>> 145247ba88ba8571701d152b9c24a32f2a3eb141
                                                 </div>
                                             </td>
                                             <td v-if="event.approvedBy != null && event.approvedBy != undefined">
                                                 {{ event.approvedBy.name }}
                                             </td>
                                             <td v-if="deleteMode">
-                                                <div class="w3-round pointer-button w3-red w3-hover-dark-gray w3-padding" @click="deleteEvent(event._id)">Delete</div>
+                                                <div class="w3-round pointer-button w3-red w3-hover-orange w3-padding" @click="deleteEvent(event._id)">Delete</div>
                                             </td>
                                         </tr>
                                     </table>
