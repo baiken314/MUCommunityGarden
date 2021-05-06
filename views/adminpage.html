@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My User | MU Community Garden</title>
+    <title>Admin Settings | MU Community Garden</title>
     <link rel="stylesheet" href="css/GardenStyle.css">
 	<link rel="stylesheet" href="css/w3.css">
     <script src="/socket.io/socket.io.js"></script>
@@ -19,7 +19,7 @@
                     <a href="/volunteer" style="font-size:20px" class="w3-bar-item w3-button">Volunteer Log</a>
                     <a href="/logout" style="font-size:20px" class="w3-bar-item w3-button w3-right">Logout</a>
                     <a href="/userpage" style="font-size:20px" class="w3-bar-item w3-button w3-right">My User</a>
-                    <a v-if="dataApp.user.type == 'admin'" href="/admin-page" style="font-size:20px" class="w3-bar-item w3-button w3-right w3-blue">Admin Settings</a>
+                    <a v-if="user.type == 'admin'" href="/admin-page" style="font-size:20px" class="w3-bar-item w3-button w3-right w3-blue">Admin Settings</a>
                     </b>
                 </div>
             </div>
@@ -29,72 +29,6 @@
         <br>
         <div style="width:60%; height:100%; margin:auto; padding:20px;">
             <div class="custom-format">
-                <div class="custom-format-container">
-                    <h1 class="user-header w3-container w3-margin">Welcome, {{user.name}}</h1>
-                    <div class="custom-format-container">
-                        <h3 class="custom-format-header">Events</h3>
-                        <div class="custom-format-container">
-                            <div class="list">
-                                <table class="w3-table-all">
-                                    <tr>
-                                        <td v-for="event in events" :key="event.start">
-                                            {{ event.title }}
-                                        </td>
-                                        <td v-for="event in events" :key="event.start">
-                                            {{ event.start }}
-                                        </td>
-                                        <td v-for="event in events" :key="event.end">
-                                            {{ event.end }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Title</td>
-                                        <td>Start Date</td>
-                                        <td>End Date</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <h3 class="custom-format-header">Your Garden Plots</h3>
-                        <div class="custom-format-container">
-                            <div class="list">
-                                <table class="w3-table-all">
-                                    <tr>
-                                        <td v-for="garden in gardens" :key="garden.plot">
-                                            {{ garden.plot }}
-                                        </td>
-                                        <td v-for="garden in gardens" :key="garden.user">
-                                            {{ garden.user }}
-                                        </td>
-                                    </tr>
-                                </table>        
-                            </div>
-                        </div>
-                        <h3 class="custom-format-header">Current Volunteer Tasks</h3>
-                        <div class="custom-format-container">
-                            <div class="list">
-                                <table class="w3-table-all">
-                                    <tr>
-                                        <td>Title</td>
-                                        <td>Start Date</td>
-                                        <td>End Date</td>
-                                    </tr>
-                                    <tr>
-                                        <td v-for="task in tasks" :key="task.title"> this should be moved to the row to iterate better
-                                            {{ task.title }}
-                                        </td>
-                                        <td v-for="task in tasks" :key="task.completedDate">
-                                            {{ task.completedDate }}
-                                        </td>
-                                        <td v-for="task in tasks" :key="task.garden">
-                                            {{ task.garden }}
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
