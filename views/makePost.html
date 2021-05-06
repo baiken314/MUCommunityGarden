@@ -41,8 +41,8 @@
 							<p>Tags (separated by comma):</p>
 							<input v-model="tags" class="w3-input w3-border w3-light-grey" type="text" style="height:50px" placeholder="ex. 'tomatoes, watering'">
 							<div v-if="user.type === 'admin'">
-								<p>Make post an annoucement (sends notification to gardeners): </p>
-								<input v-model="isAnnouncement" class="w3-check" type="checkbox">
+								<p class="w3-left">Make post an annoucement:</p>
+								<input v-model="isAnnouncement" class="w3-check w3-right" type="checkbox">
 							</div>
 							<p>Post content:</p>
 							<input v-model="content" class="w3-input w3-border w3-light-grey" type="text" style="height:150px" placeholder="Write your post here">
