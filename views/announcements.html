@@ -8,17 +8,18 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-	<div style="height:100%;">
+	<div id="data-app" style="height:100%;">
 		<div class="w3-top">
 			<div class="w3-bar w3-mobile" style="background-color:#69B3E7">
 				<img src="logo.png" class="w3-bar-item" style="height:65px;">
 				<div style="width:80%; margin:auto; padding:10px;">
 					<b>
-						<a href="/announcements" style="font-size:20px" class="w3-bar-item w3-button">Announcements</a>
+						<a href="/announcements" style="font-size:20px" class="w3-bar-item w3-button w3-blue">Announcements</a>
 						<a href="/forum" style="font-size:20px" class="w3-bar-item w3-button">Message Board</a>
 						<a href="/volunteer" style="font-size:20px" class="w3-bar-item w3-button">Volunteer Log</a>
 						<a href="/logout" style="font-size:20px" class="w3-bar-item w3-button w3-right">Logout</a>
-						<a href="/userpage" style="font-size:20px" class="w3-bar-item w3-button w3-right w3-blue">My User</a>
+						<a href="/userpage" style="font-size:20px" class="w3-bar-item w3-button w3-right">My User</a>
+						<a v-if="user.type == 'admin'" href="/admin-page" style="font-size:20px" class="w3-bar-item w3-button w3-right">Admin Settings</a>
 					</b>
 				</div>
 			</div>
@@ -26,7 +27,7 @@
 		<br>
 		<br>
 		<br>
-		<div id="data-app" class="custom-format" style="width:80%; height:100%; margin:auto; padding:20px;">
+		<div class="custom-format" style="width:80%; height:100%; margin:auto; padding:20px;">
 			<h1 class="custom-format-header">Announcements</h1>
 			<div class="w3-row w3-mobile">
 				<div class="w3-column w3-left w3-half">
