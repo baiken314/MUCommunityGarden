@@ -161,7 +161,7 @@ async function toggleAdminRights(args, dataApp){
 
 async function deleteUser(args, dataApp)
 {
-    
+
 }
 
 // backend is written for these, but not implemented on frontend
@@ -212,8 +212,10 @@ let dataApp = new Vue({
         content: null,
         isAnnouncement: null,
         searchString: "",
+        deleteMode: false,
 
         selectedUserName: null,
+        selectedVolunteerLogID: null,
 
         date: null,
         hours: 0
