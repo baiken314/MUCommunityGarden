@@ -19,6 +19,7 @@ async function updateDataApp(dataApp) {
     dataApp.posts = userSession.posts;
     dataApp.tasks = userSession.tasks;
     dataApp.currentPost = userSession.currentPost;
+    dataApp.users = userSession.users || null;
 
     console.log(JSON.stringify(userSession.currentPost));
 }
@@ -181,6 +182,7 @@ let dataApp = new Vue({
         posts: {},
         tasks: {},
         currentPost: {},  // used for post.html
+        users: null,
         
         title: null,
         tags: null,
