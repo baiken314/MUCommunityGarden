@@ -139,6 +139,17 @@ body {
   margin-bottom: 10px;
 }
 
+.post-announcement {
+  margin: auto;
+  padding:20px;
+  background-color: #fff;
+  min-height: 200px;
+  overflow:visible;
+  text-align:justify;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
 .post-info {
   margin: auto;
   padding:10px;
