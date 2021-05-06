@@ -48,7 +48,7 @@
                                         <td>Action</td>
                                     </tr>
                                     <tr v-for="event in events.filter(event => event.type == 'volunteering' && event.user.name == user.name)">
-                                        <td>
+                                        <td style="max-width:250px;">
                                             {{ event.content }}
                                         </td>
                                         <td>
