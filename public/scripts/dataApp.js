@@ -301,7 +301,7 @@ let dataApp = new Vue({
             if (this.content.length && this.hours > 0 && this.hours < 24) {
                 await logVolunteerHours({
                     content: this.content,
-                    start: new Date(this.date).setHours(new Date(this.date).getHours() + 5),
+                    start: new Date(this.date).setHours(new Date(this.date).getHours() + 5), 
                     hours: this.hours
                 }, this);
                 window.location = URL + "/userpage";
