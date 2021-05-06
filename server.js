@@ -122,6 +122,22 @@ app.get("/volunteer", (req, res) => {
     res.sendFile(__dirname + "/views/volunteer.html"); 
 });
 
+app.get("/admin-page", (req, res) => {
+    console.log("GET admin-page");
+
+    if (req.session.user == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (req.session.user.type != "admin") {
+        res.redirect("/userpage");
+        return;
+    }
+
+    res.sendFile(__dirname + "/views/adminpage.html"); 
+});
+
 
 // get data
 app.get("/user-session", async (req, res) => {
