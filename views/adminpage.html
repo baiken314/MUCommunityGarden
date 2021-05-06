@@ -27,8 +27,101 @@
         <br>
         <br>
         <br>
-        <div style="width:60%; height:100%; margin:auto; padding:20px;">
+        <div style="width:80%; height:100%; margin:auto; padding:20px;">
             <div class="custom-format">
+                <div class="w3-row w3-mobile">
+                    <div class="w3-column w3-left w3-half">
+                        <div class="custom-format-container">
+                            <div class="custom-format-header w3-row">
+                                <h3>Users</h3>
+                            </div>
+                            <div class="custom-format-container">
+                                <div v-for="userEntry in users" class="custom-format-container" @click="selectedUserName = userEntry.name">
+                                    <h4 class="custom-format-header" style="text-align:left;">{{userEntry.name}}</h4>
+                                    <div v-if="userEntry.name == selectedUserName" class="custom-format-container">
+                                        <h5 v-if="userEntry.type == 'admin'">Remove Admin Privileges</h5> 
+                                        <h5 v-if="userEntry.type != 'admin'">Grant Admin Privileges</h5> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-column w3-right w3-half">
+                        <div class="custom-format-container">
+                            <div class="custom-format-header w3-row">
+                                <h3>Volunteer Logs</h3>
+                            </div>
+                            <div v-if="selectedUserName == null" class="custom-format-container">
+                                <h4 v-if="events.filter(event => event.type == 'volunteering').length">
+                                    Total volunteer hours: 
+                                    {{ Math.round(events.filter(event => event.type == 'volunteering').reduce((total, event) => { return total += event.hours }, 0) * 10) / 10 }}
+                                </h4>
+                                <div class="list">
+                                    <table class="w3-table-all">
+                                        <tr>
+                                            <td>Activities</td>
+                                            <td>Date</td>
+                                            <td>Hours</td>
+                                            <td>Approved by</td>
+                                            <td>Action</td>
+                                        </tr>
+                                        <tr v-for="event in events.filter(event => event.type == 'volunteering')">
+                                            <td style="max-width:250px;">
+                                                {{ event.content }}
+                                            </td>
+                                            <td>
+                                                {{ new Date(event.start).toLocaleDateString() }}
+                                            </td>
+                                            <td>
+                                                {{ event.hours }}
+                                            </td>
+                                            <td>
+                                                {{ event.approvedBy ? event.approvedBy.name : "pending..." }}
+                                            </td>
+                                            <td @click="deleteEvent(event._id)" class="w3-bold w3-hover-dark-gray" style="color: red;">
+                                                Delete
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div v-if="selectedUserName != null" class="custom-format-container">
+                                <h4 v-if="events.filter(event => event.type == 'volunteering' && event.user.name == selectedUserName).length">
+                                    Total volunteer hours: 
+                                    {{ Math.round(events.filter(event => event.type == 'volunteering' && event.user.name == selectedUserName).reduce((total, event) => { return total += event.hours }, 0) * 10) / 10 }}
+                                </h4>
+                                <div class="list">
+                                    <table class="w3-table-all">
+                                        <tr>
+                                            <td>Activities</td>
+                                            <td>Date</td>
+                                            <td>Hours</td>
+                                            <td>Approved by</td>
+                                            <td>Action</td>
+                                        </tr>
+                                        <tr v-for="event in events.filter(event => event.type == 'volunteering' && event.user.name == selectedUserName)">
+                                            <td style="max-width:250px;">
+                                                {{ event.content }}
+                                            </td>
+                                            <td>
+                                                {{ new Date(event.start).toLocaleDateString() }}
+                                            </td>
+                                            <td>
+                                                {{ event.hours }}
+                                            </td>
+                                            <td>
+                                                {{ event.approvedBy ? event.approvedBy.name : "pending..." }}
+                                            </td>
+                                            <td @click="deleteEvent(event._id)" class="w3-bold w3-hover-dark-gray" style="color: red;">
+                                                Delete
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
             </div>
         </div>
     </div>
