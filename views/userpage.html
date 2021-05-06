@@ -32,13 +32,16 @@
                 <div class="custom-format-container">
                     <h1 class="user-header w3-container w3-margin">Welcome, {{user.name}}</h1>
                     <div class="custom-format-container">
-                        <h3 class="custom-format-header">Voulenteer Log</h3>
+                        <h3 class="custom-format-header">My Volunteer Logs</h3>
                         <div class="custom-format-container">
                             <h4 v-if="events.filter(event => event.type == 'volunteering' && event.user.name == user.name).length">
                                 Total volunteer hours: 
                                 {{ Math.round(events.filter(event => event.type == 'volunteering' && event.user.name == user.name).reduce((total, event) => { return total += event.hours }, 0) * 10) / 10 }}
                             </h4>
-                            <div class="list">
+                            <div v-if="events.filter(event => event.type == 'volunteering' && event.user.name == user.name).length == 0">
+                                You currently have not submitted volunteer logs. To do so, click on "Volunteer Log" on the top navigation bar.
+                            </div>
+                            <div v-if="events.filter(event => event.type == 'volunteering' && event.user.name == user.name).length" class="list">
                                 <table class="w3-table-all">
                                     <tr>
                                         <td>Activities</td>
