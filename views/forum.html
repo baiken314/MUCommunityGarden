@@ -55,6 +55,7 @@
                                 {{ post.content }}
                             </div>
                             <div v-if="post.comments" class="viewbutton">
+                                ❤️{{ currentPost.likedBy.length }}
                                 <a v-bind:href="`/post/view/${ post._id }`">
                                     <button class ="w3-button pointer-button w3-white w3-border w3-round w3-border-blue" type="button">VIEW {{ post.comments.length }} COMMENTS</button>
                                 </a>
