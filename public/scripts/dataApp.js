@@ -309,7 +309,7 @@ let dataApp = new Vue({
         },
 
         deleteEvent: async function (eventId) {
-            deleteEvent({
+            await deleteEvent({
                 event: eventId
             }, this);
             updateDataApp(this);
