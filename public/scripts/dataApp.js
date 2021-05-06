@@ -135,7 +135,24 @@ async function logVolunteerHours(args, dataApp) {
 
 // below functions for admins
 async function toggleApproveVolunteerHours(args, dataApp) {
+    console.log("BEGIN toggleApproveVolunteerHours");
 
+    args.user = dataApp.user._id;
+    args.type = "volunteering";
+
+    console.log(args);
+
+    const req = await fetch(URL + "/event/admin-approve", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(args)
+    });
+    const res = await req.json();
+
+    console.log("END toggleApproveVolunteerHours " + res);
 }
 
 async function toggleAdminRights(args, dataApp){

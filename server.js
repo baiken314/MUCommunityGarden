@@ -229,7 +229,7 @@ app.post("/login", async (req, res) => {
     // create new user for signup
     if (req.body.email) {
         if (await User.find({ name: req.body.name }).length > 0) {
-            res.send("Username " + req.body.name + " already exists.");
+            res.json({ message: "Username " + req.body.name + " already exists."});
             return;
         }
 
@@ -248,11 +248,11 @@ app.post("/login", async (req, res) => {
     else {
         user = await User.findOne({ name: req.body.name });
         if (typeof user == "undefined" || typeof user == "null" || user == null) {
-            res.send(`User ${req.body.name} does not exist.`);
+            res.send({ message: `User ${req.body.name} does not exist.` });
             return;
         }
         if (user.password != req.body.password) {
-            res.send(`Password is incorrect.`);
+            res.send({ message: `Password is incorrect.` });
             return;
         }
     }
