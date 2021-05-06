@@ -44,7 +44,8 @@
                     <div v-for="post in posts.filter(post => (post.parent == null || post.parent == undefined) && post.type != 'announcement')
                         .filter(post => post.title.toLowerCase().includes(searchString.toLowerCase()) || 
                             post.content.toLowerCase().includes(searchString.toLowerCase()) || 
-                            post.user.name.toLowerCase().includes(searchString.toLowerCase()))
+                            post.user.name.toLowerCase().includes(searchString.toLowerCase())) ||
+                            post.tags.join(' ').toLowerCase().includes(searchString.toLowerCase())
                         .slice(0, 50)" 
                         class="custom-format-container">
                         <h4 class="custom-format-header" style="text-align:left"><a v-bind:href="`/post/view/${ post._id }`">{{ post.title }}</a></h4>
@@ -53,6 +54,7 @@
                                 Created by: {{ post.user.name }} on {{ new Date(post.date).toLocaleString() }}
                             </div>
                             <div class="post">
+                                <h5 v-if="post.tags.length" class="w3-bold" style="color: #334488; font-weight: bold;">{{ post.tags.join(", ").toLowerCase() }}</h5>
                                 {{ post.content }}
                             </div>
                             <div v-if="post.comments" class="viewbutton">

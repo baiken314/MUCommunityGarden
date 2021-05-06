@@ -38,6 +38,7 @@
 						<div class="w3-container" style="text-align:left">
 							<h3>by {{ currentPost.user.name }}</h3>
 							<h4>{{ new Date(currentPost.date).toLocaleString() }}</h4>
+							<h5 v-if="currentPost.tags.length" class="w3-bold" style="color: #334488; font-weight: bold;">{{ currentPost.tags.join(", ").toLowerCase() }}</h5>
 							<p>{{ currentPost.content }}</p>
 							<div class="w3-row">
 								<h4 @click="likePostFromPostPage()" class="w3-light-blue w3-round w3-hover-white pointer-button w3-padding w3-left w3-col" style="width:15%; min-width:200px;" >❤️{{ currentPost.likedBy.length }} - Like</h4>
