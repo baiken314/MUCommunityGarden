@@ -142,6 +142,11 @@ async function toggleAdminRights(args, dataApp){
     
 }
 
+async function deleteUser(args, dataApp)
+{
+    
+}
+
 // backend is written for these, but not implemented on frontend
 //async function createGarden(args, dataApp) {}
 //async function deleteGarden(args, dataApp) {}

@@ -37,10 +37,12 @@
                             </div>
                             <div class="custom-format-container">
                                 <div v-for="userEntry in users" class="custom-format-container" @click="selectedUserName = userEntry.name">
-                                    <h4 class="custom-format-header" style="text-align:left;">{{userEntry.name}}</h4>
+                                    <h4 v-if="userEntry.type == 'admin'" class="custom-format-header" style="text-align:left;">{{userEntry.name}} - Admin</h4>
+                                    <h4 v-if="userEntry.type != 'admin'" class="custom-format-header" style="text-align:left;">{{userEntry.name}}</h4>
                                     <div v-if="userEntry.name == selectedUserName" class="custom-format-container">
-                                        <h5 v-if="userEntry.type == 'admin'">Remove Admin Privileges</h5> 
-                                        <h5 v-if="userEntry.type != 'admin'">Grant Admin Privileges</h5> 
+                                        <h5 class="w3-round pointer-button w3-gray w3-hover-dark-gray w3-padding" @click="toggleAdminRights(userEntry._id)" v-if="userEntry.type == 'admin' && selectedUserName != user.name">Remove Admin Privileges</h5>
+                                        <h5 class="w3-round pointer-button w3-gray w3-hover-dark-gray w3-padding" @click="toggleAdminRights(userEntry._id)" v-if="userEntry.type != 'admin'">Grant Admin Privileges</h5>
+                                        <h5 class="w3-round w3-gray w3-padding" v-if="selectedUserName == user.name">Cannot Remove Own Admin Privileges</h5>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +80,7 @@
                                             <td>
                                                 {{ event.approvedBy ? event.approvedBy.name : "pending..." }}
                                             </td>
-                                            <td @click="deleteEvent(event._id)" class="w3-bold w3-hover-dark-gray" style="color: red;">
+                                            <td @click="deleteEvent(event._id)" class="w3-bold w3-hover-dark-gray pointer-button" style="color: red;">
                                                 Delete
                                             </td>
                                         </tr>
@@ -112,7 +114,7 @@
                                             <td>
                                                 {{ event.approvedBy ? event.approvedBy.name : "pending..." }}
                                             </td>
-                                            <td @click="deleteEvent(event._id)" class="w3-bold w3-hover-dark-gray" style="color: red;">
+                                            <td @click="deleteEvent(event._id)" class="w3-bold w3-hover-dark-gray pointer-button" style="color: red;">
                                                 Delete
                                             </td>
                                         </tr>
