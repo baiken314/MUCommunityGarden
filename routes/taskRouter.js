@@ -61,7 +61,7 @@ router.route("/delete").post(async (req, res) => {
     let user = await User.findOne({ _id: req.body.user });
 
     let canDelete = true;
-    for (taskid of req.body.tasks) {
+    for (taskId of req.body.tasks) {
         let task = await Task.findOne({ _id: taskId });
         if (!task.user.equals(user._id)) {
             canDelete = user.type == "admin";
