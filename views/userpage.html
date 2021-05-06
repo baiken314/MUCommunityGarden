@@ -33,6 +33,9 @@
                     <div class="custom-format-container">
                         <h3 class="custom-format-header">Voulenteer Log</h3>
                         <div class="custom-format-container">
+                            <h4 v-if="events.filter(event => event.type == 'volunteering').length">
+                                Total volunteer hours: {{ events.filter(event => event.type == 'volunteering').reduce((total, event) => { return total += event.hours }, 0) }}
+                            </h4>
                             <div class="list">
                                 <table class="w3-table-all">
                                     <tr>
@@ -40,6 +43,7 @@
                                         <td>Date</td>
                                         <td>Hours</td>
                                         <td>Approved by</td>
+                                        <td>Action</td>
                                     </tr>
                                     <tr v-for="event in events.filter(event => event.type == 'volunteering')">
                                         <td>
@@ -53,6 +57,9 @@
                                         </td>
                                         <td>
                                             {{ event.approvedBy ? event.approvedBy.name : "pending..." }}
+                                        </td>
+                                        <td @click="deleteEvent(event._id)" class="w3-bold w3-hover-dark-gray" style="color: red;">
+                                            Delete
                                         </td>
                                     </tr>
                                 </table>

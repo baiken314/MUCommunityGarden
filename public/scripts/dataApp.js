@@ -147,7 +147,27 @@ async function toggleAdminRights(args, dataApp){
 //async function removeGardenFromUser(args, dataApp) {}
 //async function createEvent(args, dataApp) {}
 //async function updateEvent(args, dataApp) {}
-//async function deleteEvent(args, dataApp) {}
+
+async function deleteEvent(args, dataApp) {
+    console.log("BEGIN deleteEvent");
+
+    args.user = dataApp.user._id;
+    args.events = [args.event];
+
+    console.log(args);
+
+    const req = await fetch(URL + "/event/delete", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(args)
+    });
+    const res = await req.json();
+
+    console.log("END deleteEvent " + res);
+}
 
 /*********
  * VUE APP
@@ -226,6 +246,13 @@ let dataApp = new Vue({
                 }, this);
                 window.location = URL + "/userpage";
             }
+        },
+
+        deleteEvent: async function (eventId) {
+            deleteEvent({
+                event: eventId
+            }, this);
+            updateDataApp(this);
         },
     }
 });

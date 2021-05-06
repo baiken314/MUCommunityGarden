@@ -110,6 +110,7 @@ router.route("/delete").post(async (req, res) => {
         for (eventId of req.body.events) {
             let event = await Event.findOne({ _id: eventId });
             await event.delete();
+            res.json({ message: "event successfully deleted" });
         }
     }
     else {
