@@ -95,13 +95,8 @@
                                             <td v-if="event.approvedBy == null || event.approvedBy == undefined">
                                                 <div v-if="selectedVolunteerLogID != event._id" @click="selectedVolunteerLogID = event._id" class="w3-round pointer-button w3-gray w3-hover-dark-gray w3-padding">Pending</div>
                                                 <div v-if="selectedVolunteerLogID == event._id">
-<<<<<<< HEAD
-                                                    <div class="w3-round pointer-button w3-green w3-hover-dark-gray w3-padding" @click="toggleApproveVolunteerHours(event._id)">Approve</div>
-                                                    <div class="w3-round pointer-button w3-red w3-hover-dark-gray w3-padding" @click="deleteEvent(event._id)">Decline</div>
-=======
                                                     <div class="w3-round pointer-button w3-green w3-hover-light-green w3-padding" @click="toggleApproveVolunteerHours(event._id)">Approve</div>
                                                     <div class="w3-round pointer-button w3-red w3-hover-orange w3-padding" @click="deleteEvent(event._id)">Decline</div>
->>>>>>> 145247ba88ba8571701d152b9c24a32f2a3eb141
                                                 </div>
                                             </td>
                                             <td v-if="event.approvedBy != null && event.approvedBy != undefined">
