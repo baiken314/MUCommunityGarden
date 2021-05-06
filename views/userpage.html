@@ -34,8 +34,8 @@
                     <div class="custom-format-container">
                         <h3 class="custom-format-header">Voulenteer Log</h3>
                         <div class="custom-format-container">
-                            <h4 v-if="events.filter(event => event.type == 'volunteering').length">
-                                Total volunteer hours: {{ events.filter(event => event.type == 'volunteering').reduce((total, event) => { return total += event.hours }, 0) }}
+                            <h4 v-if="events.filter(event => event.type == 'volunteering' && event.user.name == user.name).length">
+                                Total volunteer hours: {{ events.filter(event => event.type == 'volunteering' && event.user.name == user.name).reduce((total, event) => { return total += event.hours }, 0) }}
                             </h4>
                             <div class="list">
                                 <table class="w3-table-all">
@@ -46,7 +46,7 @@
                                         <td>Approved by</td>
                                         <td>Action</td>
                                     </tr>
-                                    <tr v-for="event in events.filter(event => event.type == 'volunteering')">
+                                    <tr v-for="event in events.filter(event => event.type == 'volunteering' && event.user.name == user.name)">
                                         <td>
                                             {{ event.content }}
                                         </td>
