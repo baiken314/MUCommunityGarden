@@ -40,7 +40,7 @@
 
                 &nbsp;
                 <div class="custom-format-container">
-                    <div v-for="post in posts.filter(post => post.parent == null || post.parent == undefined)
+                    <div v-for="post in posts.filter(post => post.parent == null || post.parent == undefined && post.type != 'announcement')
                         .filter(post => post.title.toLowerCase().includes(searchString.toLowerCase()) || 
                             post.content.toLowerCase().includes(searchString.toLowerCase()) || 
                             post.user.name.toLowerCase().includes(searchString.toLowerCase()))
