@@ -11,7 +11,7 @@ module.exports.io = io;
 
 const MongoStore = require("connect-mongo")(session);
 
-const MONGO_URI = "mongodb+srv://highlandcentralinc:joenamath2021@cluster0.nz8tm.mongodb.net/mu_garden?retryWrites=true&w=majority";
+const MONGO_URI = "mongodb+srv://mucommunitygarden:Gardentemppassword123!@cluster0.ymr7t.mongodb.net/mu_garden?retryWrites=true&w=majority";
 const PORT = 8000;
 
 const eventRouter = require("./routes/eventRouter");
