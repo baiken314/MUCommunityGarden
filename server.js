@@ -174,10 +174,10 @@ app.get("/user-session", async (req, res) => {
 
     res.json({
         events: req.session.user.type == "admin" ? 
-            await Event.find().sort({ start: -1 }).populate("user", "name -_id").populate("approvedBy", "name -_id") :
-            await Event.find({ user: req.session.user._id }).sort({ start: -1 }).populate("user", "name -_id").populate("approvedBy", "name -_id"),
+            await Event.find().sort({ start: -1 }).populate("user", "name -_id").populate("approvedBy", "name") :
+            await Event.find({ user: req.session.user._id }).sort({ start: -1 }).populate("user", "name").populate("approvedBy", "name -_id"),
         gardens: await Garden.find().sort({ number: 1 }),
-        posts: await Post.find({ parent: undefined }).sort({ date: -1 }).populate("user", "name -_id").populate("comments"),
+        posts: await Post.find({ parent: undefined }).sort({ date: -1 }).populate("user", "name").populate("comments"),
         tasks: await Task.find(),
         user: user,
         users: req.session.user.type == "admin" ? await User.find().sort({ name: 1 }).populate("posts").populate("events") : null,

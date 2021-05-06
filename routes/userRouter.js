@@ -67,8 +67,8 @@ router.route("/admin-delete").post(async (req, res) => {
         return;
     }
 
-    Event.deleteMany({ user: user._id });
-    Post.deleteMany({ user: user._id });
+    await Event.deleteMany({ user: user._id });
+    await Post.deleteMany({ user: user._id });
 
     await user.delete();
 

@@ -39,6 +39,7 @@
                 </div>
 
                 &nbsp;
+
                 <div class="custom-format-container">
                     <div v-for="post in posts.filter(post => (post.parent == null || post.parent == undefined) && post.type != 'announcement')
                         .filter(post => post.title.toLowerCase().includes(searchString.toLowerCase()) || 
@@ -61,10 +62,6 @@
                                 </a>
                             </div>
                         </div>
-                        <!-- <div v-if="post.user._id == user._id">
-                            <button class="pointer-button w3-red w3-right w3-round w3-hover-dark-gray">Delete this post</button>
-                            &nbsp;
-                        </div> -->
                     </div>
                 </div>
             </div>
